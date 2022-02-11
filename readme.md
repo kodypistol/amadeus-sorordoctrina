@@ -2,7 +2,7 @@
 
 🚧 Work in progress
 
-## the one studio group
+## a Veridis Quo production
 
 ```
 ^^
