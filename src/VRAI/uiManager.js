@@ -6,7 +6,6 @@ const uiManager = {
     },
 
     onChangeScreen(index){
-        console.log("UI : change screen to " + index);
     }
 }
 

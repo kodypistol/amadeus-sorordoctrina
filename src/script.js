@@ -2,7 +2,7 @@ import router from "./VRAI/router";
 import ui from "./VRAI/uiManager";
 import experience from "./VRAI/experienceManager";
 
-// point d'entrée
+// Point d'entrée
 router.init();
 ui.init();
 experience.init();
