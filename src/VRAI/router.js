@@ -1,3 +1,5 @@
+import signal from "signal-js";
+
 const router = {
     init(){
         this.currentScreen = 0;
@@ -5,6 +7,7 @@ const router = {
 
     showScreen(index){
         this.currentScreen = index;
+        signal.emit('changeScreen', index);
     }
 }
 

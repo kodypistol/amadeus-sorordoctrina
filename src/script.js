@@ -1,3 +1,14 @@
+import router from "./VRAI/router";
+import ui from "./VRAI/uiManager";
+import experience from "./VRAI/experienceManager";
+
+// point d'entrée
+router.init();
+ui.init();
+experience.init();
+
+router.showScreen(0);
+
 
 import './style.css'
 import * as THREE from 'three'
