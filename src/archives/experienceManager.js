@@ -2,8 +2,8 @@ import signal from "signal-js";
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
-import bridgeLoop from "../BridgeLoop";
-import Loader from '../Loader'
+import bridgeLoop from "./BridgeLoop";
+import Loader from './Loader'
 
 const experienceManager = {
     init(){
