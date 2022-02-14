@@ -10,7 +10,7 @@ experience.init();
 router.showScreen(0);
 
 
-import './style.css'
+import './styles.scss'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import startExperience from './Experience.js'
