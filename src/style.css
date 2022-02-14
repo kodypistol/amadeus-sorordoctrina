@@ -1,7 +1,8 @@
 /**
 Fonts
  */
-@font-face {
+
+ @font-face {
     font-family: "Lenora Premium";
     font-weight: bold;
     src: url("../static/fonts/LenoraPremium-Bold.otf") format("opentype");
@@ -9,13 +10,8 @@ Fonts
 
 
 /**
-* Document
- */
-
-{
-    margin: 0;
-    padding: 0;
-}
+Document
+*/
 
 html,
 body
