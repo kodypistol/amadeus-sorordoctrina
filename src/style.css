@@ -4,7 +4,7 @@ Fonts
 @font-face {
     font-family: "Lenora Premium";
     font-weight: bold;
-    src: url("../../static/fonts/LenoraPremium-Bold.otf") format("opentype");
+    src: url("../static/fonts/LenoraPremium-Bold.otf") format("opentype");
 }
 
 
