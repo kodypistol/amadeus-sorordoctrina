@@ -1,10 +1,7 @@
 
-import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import gsap from 'gsap'
-import bridgeLoop from "./BridgeLoop";
-import SceneBase from "./SceneBase";
 
 /**
  * Base
@@ -19,8 +16,6 @@ const scene = new THREE.Scene()
 const textureLoader = new THREE.TextureLoader();
 const brickTexture = textureLoader.load('./textures/color.jpg')
 const brickNormalTexture = textureLoader.load('./textures/normal.jpg')
-
-
 
 /**
  * Sizes
@@ -164,7 +159,7 @@ const tick = () =>
 
     if (started)
     {
-        bridgeLoop(THREE, camera, scene, {rectangle1, rectangle2}, renderer, gsap, deltaTime)
+        //bridgeLoop(THREE, camera, scene, {rectangle1, rectangle2}, renderer, gsap, deltaTime)
     }
 
     // Call tick again on the next frame

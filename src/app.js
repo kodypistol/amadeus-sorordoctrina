@@ -1,7 +1,5 @@
-import './styles/styles.scss';
-import router from "./router";
-import ui from "./uiManager";
-import experience from "./experienceManager";
+import * as THREE from 'three';
+import "./styles/styles.scss";
 
 // Point d'entrée
 router.init();
