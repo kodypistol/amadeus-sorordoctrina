@@ -1,3 +1,4 @@
+import './styles/styles.scss';
 import router from "./router";
 import ui from "./uiManager";
 import experience from "./experienceManager";

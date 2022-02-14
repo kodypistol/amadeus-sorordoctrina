@@ -47,11 +47,11 @@ module.exports = {
             // CSS
             {
                 test: /\.((c|sa|sc)ss)$/i,
-                use:
-                [
-                    MiniCSSExtractPlugin.loader,
-                    'css-loader'
-                ]
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                ],
             },
 
             // Images
