@@ -1,6 +1,6 @@
-import router from "./VRAI/router";
-import ui from "./VRAI/uiManager";
-import experience from "./VRAI/experienceManager";
+import router from "../router";
+import ui from "../uiManager";
+import experience from "../experienceManager";
 
 // Point d'entrée
 router.init();
@@ -13,9 +13,9 @@ router.showScreen(0);
 import './styles/styles.scss'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import startExperience from './Experience.js'
+import startExperience from '../Experience.js'
 import gsap from 'gsap'
-import bridgeLoop from "./BridgeLoop";
+import bridgeLoop from "../BridgeLoop";
 
 /**
  * Base
