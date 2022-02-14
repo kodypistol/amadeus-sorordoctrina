@@ -7,6 +7,7 @@ const router = {
 
     showScreen(index){
         this.currentScreen = index;
+        console.log("Changing screen to " + index);
         signal.emit('changeScreen', index);
     }
 }

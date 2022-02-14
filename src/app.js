@@ -8,7 +8,7 @@ router.init();
 window.addEventListener("load", () => 
 {
     ui.init();
-    experience.init();
+    //experience.init();
 
     router.showScreen(0);
 });

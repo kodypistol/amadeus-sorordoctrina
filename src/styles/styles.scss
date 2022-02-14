@@ -8,6 +8,12 @@
 
 /* Document */
 
+body, section, div {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .webgl
 {
   position: fixed;
@@ -25,12 +31,6 @@ h1 {
 p {
   font-size: 16px;
   color: white;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 section {
@@ -52,8 +52,8 @@ section {
   }
 }
 
-/* Landing */
-.landing {  
+/* Loading */
+.loading {  
   .container {
     display: flex;
     flex-direction: column;
@@ -68,5 +68,12 @@ section {
 
   img {
     width: 70%;
+  }
+}
+
+/* Landing */
+.landing {
+  h1, p {
+    text-align: center;
   }
 }
