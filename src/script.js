@@ -1,21 +1,10 @@
-import router from "../router";
-import ui from "../uiManager";
-import experience from "../experienceManager";
 
-// Point d'entrée
-router.init();
-ui.init();
-experience.init();
-
-router.showScreen(0);
-
-
-import './styles/styles.scss'
+import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import startExperience from '../Experience.js'
 import gsap from 'gsap'
-import bridgeLoop from "../BridgeLoop";
+import bridgeLoop from "./BridgeLoop";
+import SceneBase from "./SceneBase";
 
 /**
  * Base
@@ -64,7 +53,6 @@ element.addEventListener('click', () =>
     element.style.color = 'black'
     element.style.opacity = 0
 
-    startExperience(THREE, camera, scene, {cube}, renderer, gsap, started)
 
     started = true;
 

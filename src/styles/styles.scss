@@ -1,3 +1,4 @@
+
 /* Fonts */
 
 @font-face {
@@ -26,16 +27,37 @@ h1 {
   box-sizing: border-box;
 }
 
+button {
+  position: absolute;
+  font-family: "Lenora Premium";
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+button:hover
+{
+  color: black;
+  background-color: white;
+}
+
 /* Landing */
 
-.landing, .loading {
-  width: 100%;
-  height: 100vh;
-  background-color: red;
-
-  .container {
-    border: 3px solid white;
-    border-radius: 14px;
-    padding: 25px;
-  }
-}
+//.landing, .loading {
+//  width: 100%;
+//  height: 100vh;
+//  background-color: red;
+//
+//  .container {
+//    border: 3px solid white;
+//    border-radius: 14px;
+//    padding: 25px;
+//  }
+//}
