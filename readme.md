@@ -1,9 +1,16 @@
-# Amadeus: Soror Doctrina
+# Three.js - Template - Simple
 
-🚧 Work in progress
+## Setup
+Download [Node.js](https://nodejs.org/en/download/).
+Run this followed commands:
 
-## a Veridis Quo production
+``` bash
+# Install dependencies (only the first time)
+npm install
 
-```
-^^
+# Run the local server at localhost:8080
+npm run dev
+
+# Build for production in the dist/ directory
+npm run build
 ```
