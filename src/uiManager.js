@@ -7,6 +7,8 @@ const landingSection = document.querySelector("section#landing-section");
 const startingSection = document.querySelector("section#starting-section");
 const infosSection = document.querySelector("section#infos-section");
 
+const backgroundContainer = document.querySelector("div#background");
+
 const uiManager = {
     init(){
         // Events
@@ -19,6 +21,7 @@ const uiManager = {
     },
 
     onChangeScreen(index){
+        // Active / unactive DOM
         switch(index){
             case 0:
                 loadingSection.classList.add("active");
@@ -46,6 +49,8 @@ const uiManager = {
                 break;
         }
 
+        // Update background positions
+        backgroundContainer.className = "step-" + index;
     },
 
     onOpenInfos(){
