@@ -1,6 +1,3 @@
-import * as THREE from "three";
-import bridgeLoop from "./BridgeLoop";
-
 const startExperience = (THREE, camera, scene, objects, renderer, gsap) =>
 {
 
