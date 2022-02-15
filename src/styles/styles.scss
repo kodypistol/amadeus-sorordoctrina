@@ -6,6 +6,18 @@
   src: url("../../static/fonts/LenoraPremium-Bold.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "TTCommons";
+  font-weight: normal;
+  src: url("../../static/fonts/TTCommons-Regular.ttf");
+}
+
+@font-face {
+  font-family: "TTCommons";
+  font-weight: bold;
+  src: url("../../static/fonts/TTCommons-Bold.ttf");
+}
+
 /* Document */
 
 
@@ -43,6 +55,7 @@ h3 {
 }
 
 p {
+  font-family: "TTCommons";
   font-size: 16px;
   color: white;
 }
@@ -131,11 +144,12 @@ section {
   #start-exp-btn {
     position: absolute;
     bottom: 20px;
-    left: 0;
-    width: 100%;
+    left: 50vw;
+    transform: translateX(-50%);
+    width: 93%;
     border: none;
     cursor: pointer;
-    background: linear-gradient(180deg, rgba(255,255,255,0.4730624671743697) 0%, rgba(255,0,0,0) 61%);     border-bottom-right-radius: 50% 25%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.4730624671743697) 0%, rgba(255,0,0,0) 61%);
     border-top-left-radius: 50% 25%;
     border-top-right-radius: 50% 25%;
     transition: bottom 0.5s;
