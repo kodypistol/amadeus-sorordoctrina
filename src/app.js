@@ -18,8 +18,10 @@ window.addEventListener("load", () =>
 });
 
 // Experience Manager
+
+const canvas = document.querySelector("canvas.webgl");
 // Scene
-scene.create("canvas.webgl");
+scene.create(canvas);
 
 // Texture loader
 const textureLoader = new THREE.TextureLoader();
@@ -63,7 +65,7 @@ const rectangle2 = new THREE.Mesh(
 scene.addObject(rectangle2);
 
 // Renderer
-renderer.init(scene.getCanvas());
+renderer.init(canvas);
 
 const clock = new THREE.Clock();
 let lastElapsedTime = 0;
@@ -78,8 +80,7 @@ const tick = () =>
     scene.getCamera().update();
 
     // Render
-    renderer.draw(scene.getThreeScene(), 
-    scene.getCamera().getThreeCamera());
+    renderer.draw(scene);
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick);

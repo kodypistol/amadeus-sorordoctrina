@@ -2,6 +2,8 @@ import * as THREE from 'three';
 
 const renderer = {
     init(canvas){
+        this.canvas = canvas;
+
         this.threeRenderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true,
@@ -16,8 +18,8 @@ const renderer = {
         });
     },
 
-    draw(scene, canvas){
-        this.threeRenderer.render(scene, canvas);
+    draw(scene){
+        this.threeRenderer.render(scene.getThreeScene(), scene.getThreeCamera());
     }
 }
 

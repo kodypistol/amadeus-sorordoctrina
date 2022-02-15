@@ -19,7 +19,6 @@ class Camera {
         // Create controls on camera
         this.controls = new OrbitControls(this.threeCamera, canvas);
         this.controls.enableDamping = true;
-
     }
 
     getThreeCamera(){

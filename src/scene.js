@@ -2,11 +2,10 @@ import Camera from './Camera';
 import * as THREE from 'three'
 
 const scene = {
-    create(canvasId){
-        this.canvas = document.querySelector(canvasId);
+    create(canvas){
         this.threeScene = new THREE.Scene();
 
-        this.camera = new Camera(this.canvas);
+        this.camera = new Camera(canvas);
         this.threeScene.add(this.camera.getThreeCamera());
     },
 
@@ -18,8 +17,8 @@ const scene = {
         return this.camera;
     },
 
-    getCanvas(){
-        return this.canvas;
+    getThreeCamera(){
+        return this.camera.getThreeCamera();
     },
 
     getThreeScene(){
