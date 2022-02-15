@@ -6,7 +6,6 @@ import ui from './uiManager';
 import scene from './scene';
 import renderer from './renderer';
 
-
 // Point d'entrée
 router.init();
 window.addEventListener("load", () => 
@@ -18,8 +17,8 @@ window.addEventListener("load", () =>
 });
 
 // Experience Manager
-
 const canvas = document.querySelector("canvas.webgl");
+
 // Scene
 scene.create(canvas);
 
@@ -87,4 +86,3 @@ const tick = () =>
 }
 
 tick();
->>>>>>> 4a789eeed1e0d60a638884bfc90a418d9018323d
