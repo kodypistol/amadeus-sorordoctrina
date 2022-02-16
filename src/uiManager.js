@@ -4,7 +4,6 @@ import router from "./router";
 // DOM references
 const loadingSection = document.querySelector("#loading-section");
 const landingSection = document.querySelector("#landing-section");
-
 const uiManager = {
     init(){
         // Events
