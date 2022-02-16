@@ -18,7 +18,8 @@ const canvas = document.querySelector("canvas.webgl");
 const experienceManager =
     {
         objects: {
-            statue: null,
+            mozart: 321,
+            bridge: null,
             clavecin: null,
             parchemin: null,
             bottle: null
@@ -41,8 +42,8 @@ const experienceManager =
             signal.on('changeScreen', this.onChangeScreen)
 
             loaderManager.loadMultipleGLTFs({
-                mozart: assets.mozart,
-                bridge: assets.mozart
+                mozart: assets.mozart.url,
+                bridge: assets.bridge.url
             }, this.onLoadComplete.bind(this))
 
 
@@ -52,19 +53,35 @@ const experienceManager =
         },
 
         onLoadComplete(){
-            this.setupIntro(loaderManager.loadedAssets.mozart);
+            // this.setupIntro(loaderManager.loadedAssets.mozart);
+            console.log('loaderManager.loadedAssets : ', loaderManager.loadedAssets)
+            // console.log('typeof (loaderManager.loadedAssets)',typeof (loaderManager.loadedAssets));
+            // console.log('Object.keys(loaderManager.loadedAssets.length)',Object.keys(loaderManager.loadedAssets).length)
+
+            // this.setupIntro(loaderManager.loadedAssets.mozart, assets.mozart, "mozart");
+            // this.setupIntro(loaderManager.loadedAssets.bridge, assets.bridge, "bridge");
+            Object.keys(loaderManager.loadedAssets).forEach(idx => {
+                this.setupIntro(loaderManager.loadedAssets[idx], assets[idx], idx);
+            })
+            router.showScreen(1)
         },
 
-        setupIntro(gltf){
+        setupIntro(gltf, assetsAttributes, objectName){
 
-            router.showScreen(1)
-            gltf.scene.scale.set(0.4, 0.4, 0.4);
-            gltf.scene.position.set(0, -0.8, -5);
-            gltf.scene.rotation.set(Math.PI / 8, - Math.PI * 1.6, 0);
-            gltf.transparent = true;
-            gltf.castShadow = true;
-            sceneManager.addObject(gltf.scene);
-            this.objects.statue = gltf.scene;
+
+            console.log('Object name : ', objectName)
+            this.objects[objectName] = gltf
+            //this.objects.bridge = loaderManager.loadedAssets.bridge;
+
+
+            this.objects[objectName].scene.position.set(assetsAttributes.pX, assetsAttributes.pY, assetsAttributes.pZ)
+            this.objects[objectName].scene.rotation.set(assetsAttributes.rX, assetsAttributes.rY, assetsAttributes.rZ)
+            this.objects[objectName].scene.scale.set(assetsAttributes.sX, assetsAttributes.sY, assetsAttributes.sZ)
+
+            sceneManager.addObject(this.objects[objectName].scene);
+
+
+
         },
 
         onChangeScreen(index)
@@ -105,7 +122,7 @@ const experienceManager =
                     break;
                 case 1:
 
-                    const directionalLight = new THREE.DirectionalLight(0xfffffff, 2)
+                    const directionalLight = new THREE.DirectionalLight(0xfffffff, 0.5)
                     directionalLight.position.set(-2, 2, 1)
                     directionalLight.castShadow = true
                     sceneManager.addObject(directionalLight)
