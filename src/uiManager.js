@@ -1,11 +1,23 @@
 import signal from "signal-js";
 import router from "./router";
 
+// case 0 : Loading screen
+// case 1 : Main menu
+// case 2 : Start screen
+// case 3 : Informations
+// case 4 : Popup acte 1
+// case 5 : Popup acte 2
+// case 6 : Popup acte 3
+// case 7 : End screen
+
 // DOM references
 const loadingSection = document.querySelector("section#loading-section");
 const landingSection = document.querySelector("section#landing-section");
 const startingSection = document.querySelector("section#starting-section");
 const infosSection = document.querySelector("section#infos-section");
+const act1Section = document.querySelector("section#act1");
+const act2Section = document.querySelector("section#act2");
+const act3Section = document.querySelector("section#act3");
 
 const backgroundContainer = document.querySelector("div#background");
 
@@ -28,6 +40,9 @@ const uiManager = {
                 landingSection.classList.remove("active");
                 startingSection.classList.remove("active");
                 infosSection.classList.remove("active");
+                act1Section.classList.remove("active");
+                act2Section.classList.remove("active");
+                act3Section.classList.remove("active");
                 break;
             case 1:
                 loadingSection.classList.remove("active");
@@ -40,12 +55,45 @@ const uiManager = {
                 landingSection.classList.remove("active");
                 startingSection.classList.add("active");
                 infosSection.classList.remove("active");
+                act1Section.classList.remove("active");
+                act2Section.classList.remove("active");
+                act3Section.classList.remove("active");
                 break;
             case 3:
                 loadingSection.classList.remove("active");
                 landingSection.classList.remove("active");
                 startingSection.classList.remove("active");
                 infosSection.classList.add("active");
+                act1Section.classList.remove("active");
+                act2Section.classList.remove("active");
+                act3Section.classList.remove("active");
+                break;
+            case 4:
+                loadingSection.classList.remove("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.remove("active");
+                act1Section.classList.add("active");
+                act2Section.classList.remove("active");
+                act3Section.classList.remove("active");
+                break;
+            case 5:
+                loadingSection.classList.remove("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.remove("active");
+                act1Section.classList.remove("active");
+                act2Section.classList.add("active");
+                act3Section.classList.remove("active");
+                break;
+            case 6:
+                loadingSection.classList.remove("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.remove("active");
+                act1Section.classList.remove("active");
+                act2Section.classList.remove("active");
+                act3Section.classList.add("active");
                 break;
         }
 
@@ -64,14 +112,10 @@ const uiManager = {
     onStartExp(){
         router.showScreen(2);
         setTimeout(() => {
-            router.showScreen(3);
+            router.showScreen(4);
         }, 3000);
     }
-  },
 
-  onLoadingQuit() {
-    router.showScreen(1);
-  },
 };
 
 export default uiManager;

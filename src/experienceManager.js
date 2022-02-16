@@ -119,7 +119,6 @@ const experienceManager =
             case 2:
                 // ÉCRAN SCÈNE 3D ACTE 2
                 console.log('acte 2')
-                console.log(scene.getThreeScene())
 
                 const moveToAct3 = () =>
                 {
