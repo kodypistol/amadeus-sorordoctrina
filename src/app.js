@@ -7,7 +7,7 @@ import experienceManager from "./experienceManager";
 
 // Point d'entrée
 router.init();
-window.addEventListener("load", () => 
+window.addEventListener("load", () =>
 {
     ui.init();
     experienceManager.init();

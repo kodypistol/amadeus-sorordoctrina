@@ -15,7 +15,7 @@ class Camera {
             this.threeCamera.aspect = window.innerWidth / window.innerHeight;
             this.threeCamera.updateProjectionMatrix();
         });
-        
+
         // // Create controls on camera
         // this.controls = new OrbitControls(this.threeCamera, canvas);
         // this.controls.enableDamping = true;

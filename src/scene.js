@@ -1,16 +1,16 @@
 import Camera from './Camera';
 import * as THREE from 'three'
 
-const scene = {
+const sceneManager = {
     create(canvas){
-        this.threeScene = new THREE.Scene();
+        this.scene = new THREE.Scene();
 
         this.camera = new Camera(canvas);
-        this.threeScene.add(this.camera.getThreeCamera());
+        this.scene.add(this.camera.getThreeCamera());
     },
 
     addObject(obj){
-        this.threeScene.add(obj);
+        this.scene.add(obj);
     },
 
     getCamera(){
@@ -22,12 +22,12 @@ const scene = {
     },
 
     getThreeScene(){
-        return this.threeScene;
+        return this.scene;
     },
 
     removeObject(obj){
-        this.threeScene.remove(obj);
+        this.scene.remove(obj);
     }
 }
 
-export default scene;
+export default sceneManager;
