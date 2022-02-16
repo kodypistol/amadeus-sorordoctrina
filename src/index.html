@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
     <title>Amadeus Soror Doctrina</title>
-</head>
-<body>
+  </head>
+  <body>
     <canvas class="webgl"></canvas>
-
-    <!-- Loading -->
-    <section class="loading"  id="loading-section">
+    
+    <section id="loading-section">
         <div class="container">
-            <h1>Patientez...</h1>
+            <h2>Patientez...</h2>
             <img src="https://picsum.photos/200/200" alt="TEMP">
             <p>Votre expérience est en cours de chargement...</p>
         </div>
     </section>
 
     <!-- Landing -->
-    <section class="landing" id="landing-section">
+    <section id="landing-section">
         <div class="container">
-            <h1>Landing section</h1>
+            <button class="toggle-infos" id="open-infos"> i </button>
+
+            <h1>Amadeus<br> Soror Doctrina</h1>
+            <img src="https://picsum.photos/200/200" alt="TEMP">
+            <div class="speakers-info flex">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAARCAYAAAA/mJfHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEUSURBVHgBnVMLFcIwDEwxQCXUAUjAATgAB+AAHAAKAAWAgkkAFHQoYA7GZWR72daxT967t63trte71FCg0jR1eGyAuRpOgCdwN8bcqEuBaA88gDVgK3Mz4AxEsuFfohNwoPYNV7Kha1qwBXbUsUSlr6rPPOIJ6lm8eU2A+LCknsWqaiLk/JYGlA5jJGMWcSc0rF7ApETGSVLP4vbJiTIyjhnPGDB43/QgcvRr7DewyAe9pGmDUTeTFaGJb9PsmPArFs+OwLYDESsZ45+LDLFvNmedqYWc7LSFzOvuL76lkyM1UfoOEK10WLWbw/dRm19Vq8ad7qvgzVHmO6XOB8gOuSr55xq8OeyT+OVblHGKH1lXaqUv9xVHwVhCWfUAAAAASUVORK5CYII=" alt="Ecouteurs">
+                <p>Ecouteurs externes recommandés</p>
+            </div>
+        </div>
+        <button id="start-exp-btn">
+            <h3>Démarrer l’expérience</h3>
+        </button>
+    </section>
+
+    <!-- Informations -->
+    <section id="infos-section">
+        <div class="container">
+            <button class="toggle-infos" id="close-infos">X</button>
+
+            <p>Informations</p>
         </div>
     </section>
+
+    <!-- Starting exp -->
+    <section class="starting"  id="starting-section">
+        <div class="container">
+            <h2>Inspiré de faits réels</h2>
+            <img src="https://picsum.photos/200/200" alt="TEMP">
+            <p>Nous vous recommandons d’utiliser des écouteurs externes pour profiter pleinement de l’expérience.</p>
+        </div>
+    </section>
+    
+    <div id="background" class="step-1">
+        <div class="noise"></div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <!-- a enlever, test audio -->
+    <section class="landing" id="s2">
+      <div class="container">
+        <h1>2 section</h1>
+      </div>
+    </section>
+    <section class="landing" id="s3">
+      <div class="container">
+        <h1>3 section</h1>
+        <button class="playSong">click</button>
+      </div>
+    </section>
+    <section class="landing" id="s4">
+      <div class="container">
+        <h1>4 section</h1>
+        <button class="playSong">click</button>
+      </div>
+    </section>
+    <section class="landing" id="s5">
+      <div class="container">
+        <h1>5 section</h1>
+        <button class="playSong">click</button>
+      </div>
+    </section>
+    <section class="landing" id="s6">
+      <div class="container">
+        <h1>6 section</h1>
+      </div>
+    </section>
+
 </body>
 </html>
