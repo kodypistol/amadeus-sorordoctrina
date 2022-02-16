@@ -27,79 +27,16 @@ const uiManager = {
     signal.on("changeScreen", this.onChangeScreen);
     loadingSection.addEventListener("click", this.onCloseInfos);
 
-        document.querySelector("button#open-infos").addEventListener("click", this.onOpenInfos);
-        document.querySelector("button#close-infos").addEventListener("click", this.onCloseInfos);
-        document.querySelector("button#start-exp-btn").addEventListener("click", this.onStartExp);
-    },
-
-    onChangeScreen(index){
-        // Active / unactive DOM
-        switch(index){
-            case 0:
-                loadingSection.classList.add("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 1:
-                loadingSection.classList.remove("active");
-                landingSection.classList.add("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                break;
-            case 2:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.add("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 3:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.add("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 4:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.add("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 5:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.add("active");
-                act3Section.classList.remove("active");
-                break;
-            case 6:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.add("active");
-                break;
-        }
-
-        // Update background positions
-        backgroundContainer.className = "step-" + index;
-    },
+    document
+      .querySelector("button#open-infos")
+      .addEventListener("click", this.onOpenInfos);
+    document
+      .querySelector("button#close-infos")
+      .addEventListener("click", this.onCloseInfos);
+    document
+      .querySelector("button#start-exp-btn")
+      .addEventListener("click", this.onStartExp);
+  },
 
   onChangeScreen(index) {
     // Active / unactive DOM
@@ -109,6 +46,9 @@ const uiManager = {
         landingSection.classList.remove("active");
         startingSection.classList.remove("active");
         infosSection.classList.remove("active");
+        act1Section.classList.remove("active");
+        act2Section.classList.remove("active");
+        act3Section.classList.remove("active");
         break;
       case 1:
         loadingSection.classList.remove("active");
@@ -121,12 +61,45 @@ const uiManager = {
         landingSection.classList.remove("active");
         startingSection.classList.add("active");
         infosSection.classList.remove("active");
+        act1Section.classList.remove("active");
+        act2Section.classList.remove("active");
+        act3Section.classList.remove("active");
         break;
       case 3:
         loadingSection.classList.remove("active");
         landingSection.classList.remove("active");
         startingSection.classList.remove("active");
         infosSection.classList.add("active");
+        act1Section.classList.remove("active");
+        act2Section.classList.remove("active");
+        act3Section.classList.remove("active");
+        break;
+      case 4:
+        loadingSection.classList.remove("active");
+        landingSection.classList.remove("active");
+        startingSection.classList.remove("active");
+        infosSection.classList.remove("active");
+        act1Section.classList.add("active");
+        act2Section.classList.remove("active");
+        act3Section.classList.remove("active");
+        break;
+      case 5:
+        loadingSection.classList.remove("active");
+        landingSection.classList.remove("active");
+        startingSection.classList.remove("active");
+        infosSection.classList.remove("active");
+        act1Section.classList.remove("active");
+        act2Section.classList.add("active");
+        act3Section.classList.remove("active");
+        break;
+      case 6:
+        loadingSection.classList.remove("active");
+        landingSection.classList.remove("active");
+        startingSection.classList.remove("active");
+        infosSection.classList.remove("active");
+        act1Section.classList.remove("active");
+        act2Section.classList.remove("active");
+        act3Section.classList.add("active");
         break;
     }
 
