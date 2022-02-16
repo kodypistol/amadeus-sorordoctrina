@@ -1,0 +1,114 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "extensionsUsed" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "extensionsRequired" : [
+        "KHR_draco_mesh_compression"
+    ],
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "SuperBigPhotoscan",
+            "rotation" : [
+                0,
+                0.027459528297185898,
+                0,
+                0.9996229410171509
+            ],
+            "scale" : [
+                0.1545497179031372,
+                0.1545497179031372,
+                0.1545497179031372
+            ],
+            "translation" : [
+                0.4894821345806122,
+                2.0429060459136963,
+                -0.016125202178955078
+            ]
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "SuperBigPhotoscan",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 0,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 3,
+                    "mode" : 4
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "componentType" : 5126,
+            "count" : 55453,
+            "max" : [
+                15.952445983886719,
+                21.739240646362305,
+                10.590460777282715
+            ],
+            "min" : [
+                -22.635147094726562,
+                -13.145915985107422,
+                -10.851319313049316
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 55453,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 55453,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 139638,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 424279,
+            "byteOffset" : 0
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 424280,
+            "uri" : "photoscan_mozart.bin"
+        }
+    ]
+}

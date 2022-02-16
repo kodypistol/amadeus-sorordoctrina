@@ -5,9 +5,9 @@ class Camera {
     constructor(canvas) {
         // Create a perspective camera
         this.threeCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-        this.threeCamera.position.x = 2;
-        this.threeCamera.position.y = 1;
-        this.threeCamera.position.z = -3;
+        this.threeCamera.position.x = 0;
+        this.threeCamera.position.y = 0;
+        this.threeCamera.position.z = 0;
 
         window.addEventListener('resize', () =>
         {
@@ -16,9 +16,9 @@ class Camera {
             this.threeCamera.updateProjectionMatrix();
         });
         
-        // Create controls on camera
-        this.controls = new OrbitControls(this.threeCamera, canvas);
-        this.controls.enableDamping = true;
+        // // Create controls on camera
+        // this.controls = new OrbitControls(this.threeCamera, canvas);
+        // this.controls.enableDamping = true;
     }
 
     getThreeCamera(){
@@ -26,7 +26,7 @@ class Camera {
     }
 
     update(){
-        this.controls.update();
+        // this.controls.update();
     }
 }
 
