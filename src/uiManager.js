@@ -15,9 +15,11 @@ const loadingSection = document.querySelector("section#loading-section");
 const landingSection = document.querySelector("section#landing-section");
 const startingSection = document.querySelector("section#starting-section");
 const infosSection = document.querySelector("section#infos-section");
+
 const act1Section = document.querySelector("section#act1");
 const act2Section = document.querySelector("section#act2");
 const act3Section = document.querySelector("section#act3");
+const actPopupCloseBtns = document.querySelectorAll("button.playSong");
 
 const backgroundContainer = document.querySelector("div#background");
 
@@ -30,6 +32,10 @@ const uiManager = {
         document.querySelector("button#open-infos").addEventListener("click", this.onOpenInfos);
         document.querySelector("button#close-infos").addEventListener("click", this.onCloseInfos);
         document.querySelector("button#start-exp-btn").addEventListener("click", this.onStartExp);
+    
+        for(let i = 0; i < actPopupCloseBtns.length; i++){
+            actPopupCloseBtns[i].addEventListener("click", this.onCloseActPopup());
+        }
     },
 
     onChangeScreen(index){
@@ -101,45 +107,18 @@ const uiManager = {
         backgroundContainer.className = "step-" + index;
     },
 
-  onChangeScreen(index) {
-    // Active / unactive DOM
-    switch (index) {
-      case 0:
-        loadingSection.classList.add("active");
-        landingSection.classList.remove("active");
-        startingSection.classList.remove("active");
-        infosSection.classList.remove("active");
-        break;
-      case 1:
-        loadingSection.classList.remove("active");
-        landingSection.classList.add("active");
-        startingSection.classList.remove("active");
-        infosSection.classList.remove("active");
-        break;
-      case 2:
-        loadingSection.classList.remove("active");
-        landingSection.classList.remove("active");
-        startingSection.classList.add("active");
-        infosSection.classList.remove("active");
-        break;
-      case 3:
-        loadingSection.classList.remove("active");
-        landingSection.classList.remove("active");
-        startingSection.classList.remove("active");
-        infosSection.classList.add("active");
-        break;
-    }
-
-    // Update background positions
-    backgroundContainer.className = "step-" + index;
-  },
-
   onOpenInfos() {
     router.showScreen(3);
   },
 
   onCloseInfos() {
     router.showScreen(1);
+  },
+
+  onCloseActPopup() {
+    act1Section.classList.remove("active");
+    act2Section.classList.remove("active");
+    act3Section.classList.remove("active");
   },
 
   onStartExp() {

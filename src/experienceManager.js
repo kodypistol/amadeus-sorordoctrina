@@ -125,7 +125,7 @@ const experienceManager =
                     scene.removeObject(scene.getThreeScene().children[5])
                     setTimeout(() =>
                     {
-                        router.showScreen(3);
+                        //router.showScreen(3);
                     }, 3000)
                 }
 
