@@ -22,10 +22,10 @@ const act3Section = document.querySelector("section#act3");
 const backgroundContainer = document.querySelector("div#background");
 
 const uiManager = {
-    init(){
-        // Events
-        signal.on('changeScreen', this.onChangeScreen);
-        loadingSection.addEventListener("click", this.onCloseInfos);
+  init() {
+    // Events
+    signal.on("changeScreen", this.onChangeScreen);
+    loadingSection.addEventListener("click", this.onCloseInfos);
 
         document.querySelector("button#open-infos").addEventListener("click", this.onOpenInfos);
         document.querySelector("button#close-infos").addEventListener("click", this.onCloseInfos);
@@ -101,21 +101,53 @@ const uiManager = {
         backgroundContainer.className = "step-" + index;
     },
 
-    onOpenInfos(){
-        router.showScreen(3);
-    },
-
-    onCloseInfos(){
-        router.showScreen(1);
-    },
-
-    onStartExp(){
-        router.showScreen(2);
-        setTimeout(() => {
-            router.showScreen(4);
-        }, 3000);
+  onChangeScreen(index) {
+    // Active / unactive DOM
+    switch (index) {
+      case 0:
+        loadingSection.classList.add("active");
+        landingSection.classList.remove("active");
+        startingSection.classList.remove("active");
+        infosSection.classList.remove("active");
+        break;
+      case 1:
+        loadingSection.classList.remove("active");
+        landingSection.classList.add("active");
+        startingSection.classList.remove("active");
+        infosSection.classList.remove("active");
+        break;
+      case 2:
+        loadingSection.classList.remove("active");
+        landingSection.classList.remove("active");
+        startingSection.classList.add("active");
+        infosSection.classList.remove("active");
+        break;
+      case 3:
+        loadingSection.classList.remove("active");
+        landingSection.classList.remove("active");
+        startingSection.classList.remove("active");
+        infosSection.classList.add("active");
+        break;
     }
 
+    // Update background positions
+    backgroundContainer.className = "step-" + index;
+  },
+
+  onOpenInfos() {
+    router.showScreen(3);
+  },
+
+  onCloseInfos() {
+    router.showScreen(1);
+  },
+
+  onStartExp() {
+    router.showScreen(2);
+    setTimeout(() => {
+      router.showScreen(4);
+    }, 3000);
+  },
 };
 
 export default uiManager;
