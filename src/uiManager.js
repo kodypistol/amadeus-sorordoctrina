@@ -67,11 +67,6 @@ const uiManager = {
             router.showScreen(3);
         }, 3000);
     }
-  },
-
-  onLoadingQuit() {
-    router.showScreen(1);
-  },
 };
 
 export default uiManager;
