@@ -23,6 +23,10 @@ const scene = {
 
     getThreeScene(){
         return this.threeScene;
+    },
+
+    removeObject(obj){
+        this.threeScene.remove(obj);
     }
 }
 

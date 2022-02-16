@@ -2,53 +2,70 @@ import signal from "signal-js";
 import router from "./router";
 
 // DOM references
-const loadingSection = document.querySelector("#loading-section");
-const landingSection = document.querySelector("#landing-section");
-// Tests pour audio
-const s2 = document.querySelector("#s2");
-const s3 = document.querySelector("#s3");
-const s4 = document.querySelector("#s4");
-const s5 = document.querySelector("#s5");
-const s6 = document.querySelector("#s6");
+const loadingSection = document.querySelector("section#loading-section");
+const landingSection = document.querySelector("section#landing-section");
+const startingSection = document.querySelector("section#starting-section");
+const infosSection = document.querySelector("section#infos-section");
+
+const backgroundContainer = document.querySelector("div#background");
 
 const uiManager = {
-  init() {
-    // Events
-    signal.on("changeScreen", this.onChangeScreen);
-    loadingSection.addEventListener("click", this.onLoadingQuit);
-  },
+    init(){
+        // Events
+        signal.on('changeScreen', this.onChangeScreen);
+        loadingSection.addEventListener("click", this.onCloseInfos);
 
-  onChangeScreen(index) {
-    switch (index) {
-      case 0:
-        loadingSection.classList.add("active");
-        landingSection.classList.remove("active");
-        break;
-      case 1:
-        loadingSection.classList.remove("active");
-        landingSection.classList.add("active");
-        break;
-      //test pour audio, faire une boucle
-      case 2:
-        s2.classList.add("active");
-        landingSection.classList.remove("active");
-        break;
-      case 3:
-        s2.classList.remove("active");
-        s3.classList.add("active");
-        break;
-      case 4:
-        s4.classList.add("active");
-        s3.classList.remove("active");
-        break;
-      case 5:
-        s4.classList.remove("active");
-        s5.classList.add("active");
-        break;
-      case 6:
-        s6.classList.add("active");
-        s5.classList.remove("active");
-        break;
+        document.querySelector("button#open-infos").addEventListener("click", this.onOpenInfos);
+        document.querySelector("button#close-infos").addEventListener("click", this.onCloseInfos);
+        document.querySelector("button#start-exp-btn").addEventListener("click", this.onStartExp);
+    },
+
+    onChangeScreen(index){
+        // Active / unactive DOM
+        switch(index){
+            case 0:
+                loadingSection.classList.add("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.remove("active");
+                break;
+            case 1:
+                loadingSection.classList.remove("active");
+                landingSection.classList.add("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.remove("active");
+                break;
+            case 2:
+                loadingSection.classList.remove("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.add("active");
+                infosSection.classList.remove("active");
+                break;
+            case 3:
+                loadingSection.classList.remove("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.add("active");
+                break;
+        }
+
+        // Update background positions
+        backgroundContainer.className = "step-" + index;
+    },
+
+    onOpenInfos(){
+        router.showScreen(3);
+    },
+
+    onCloseInfos(){
+        router.showScreen(1);
+    },
+
+    onStartExp(){
+        router.showScreen(2);
+        setTimeout(() => {
+            router.showScreen(3);
+        }, 3000);
     }
   },
 
