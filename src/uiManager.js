@@ -23,16 +23,21 @@ const actPopupCloseBtns = document.querySelectorAll("button.playSong");
 
 const backgroundContainer = document.querySelector("div#background");
 
+const subtitlesContainer = document.querySelector("div#subtitles-container");
+const subtitlesButton = document.querySelector("button#subtitles-toggle");
+
 const uiManager = {
-  init() {
-    // Events
-    signal.on("changeScreen", this.onChangeScreen);
-    loadingSection.addEventListener("click", this.onCloseInfos);
+    init() {
+        // Events
+        signal.on("changeScreen", this.onChangeScreen);
+        loadingSection.addEventListener("click", this.onCloseInfos);
 
         document.querySelector("button#open-infos").addEventListener("click", this.onOpenInfos);
         document.querySelector("button#close-infos").addEventListener("click", this.onCloseInfos);
         document.querySelector("button#start-exp-btn").addEventListener("click", this.onStartExp);
     
+        subtitlesButton.addEventListener("click", this.onToggleSubtitles);
+
         for(let i = 0; i < actPopupCloseBtns.length; i++){
             actPopupCloseBtns[i].addEventListener("click", this.onCloseActPopup());
         }
@@ -79,11 +84,21 @@ const uiManager = {
                 landingSection.classList.remove("active");
                 startingSection.classList.remove("active");
                 infosSection.classList.remove("active");
+                act1Section.classList.remove("active");
+                act2Section.classList.remove("active");
+                act3Section.classList.remove("active");
+                subtitlesButton.classList.add("active");
+                break;
+            case 5:
+                loadingSection.classList.remove("active");
+                landingSection.classList.remove("active");
+                startingSection.classList.remove("active");
+                infosSection.classList.remove("active");
                 act1Section.classList.add("active");
                 act2Section.classList.remove("active");
                 act3Section.classList.remove("active");
                 break;
-            case 5:
+            case 6:
                 loadingSection.classList.remove("active");
                 landingSection.classList.remove("active");
                 startingSection.classList.remove("active");
@@ -92,7 +107,7 @@ const uiManager = {
                 act2Section.classList.add("active");
                 act3Section.classList.remove("active");
                 break;
-            case 6:
+            case 7:
                 loadingSection.classList.remove("active");
                 landingSection.classList.remove("active");
                 startingSection.classList.remove("active");
@@ -127,6 +142,14 @@ const uiManager = {
       router.showScreen(4);
     }, 3000);
   },
+
+  onToggleSubtitles() {
+      subtitlesContainer.classList.toggle("active");
+  },
+
+  hideSubtitles() {
+      subtitlesContainer.classList.remove("active");
+  }
 };
 
 export default uiManager;
