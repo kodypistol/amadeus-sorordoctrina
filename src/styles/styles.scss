@@ -12,6 +12,12 @@
   src: url("../../static/fonts/TTCommons-Light.ttf");
 }
 
+@font-face {
+  font-family: "TTCommons";
+  font-weight: bold;
+  src: url("../../static/fonts/TTCommons-Bold.ttf");
+}
+
 /* Document */
 body, section, div {
   padding: 0;
@@ -199,6 +205,29 @@ section {
   }
 }
 
+/* Informations */
+#infos-section {
+  
+  .center {
+    margin-top: 120px;
+    margin-bottom: 50px;
+    padding: 0 30px;
+    text-align: center;
+  }
+
+  .flex {
+    justify-content: space-around;
+    p {
+      font-size: 14px;
+      max-width: 60vw;
+
+      strong {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 /* Background */
 #background {
   position: absolute;
@@ -369,7 +398,6 @@ section {
     left: 40px;
     width: 50px;
     height: 50px;
-    
     background: none;
     border: 1px solid black;
     border-radius: 1000px;
