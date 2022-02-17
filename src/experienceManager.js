@@ -19,7 +19,7 @@ const canvas = document.querySelector("canvas.webgl");
 const experienceManager =
     {
         objects: {
-            mozart: 321,
+            mozart: null,
             bridge: null,
             clavecin: null,
             parchemin: null,
