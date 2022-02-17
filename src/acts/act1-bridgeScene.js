@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import gsap from "gsap";
 
-import scene from "../scene";
+import sceneManager from "../scene";
 import renderer from "../renderer";
 import Camera from '../Camera';
 import experienceManager from "../experienceManager";
@@ -9,8 +9,8 @@ import experienceManager from "../experienceManager";
 const bridgeScene = {
     init()
     {
-        const brickTexture = experienceManager.loadTextures()[0]
-        const brickNormalTexture = experienceManager.loadTextures()[1]
+        const brickTexture = experienceManager.textures[0]
+        const brickNormalTexture = experienceManager.textures[1]
 
         // Placing objects
         this.rectangle1 = new THREE.Mesh(
@@ -30,7 +30,7 @@ const bridgeScene = {
         // this.rectangle1.rotation.y = - Math.PI / 5.25
 
 
-        scene.addObject(this.rectangle1);
+        sceneManager.addObject(this.rectangle1);
         console.log('rectangel1')
 
         this.rectangle2 = new THREE.Mesh(
@@ -49,7 +49,7 @@ const bridgeScene = {
 
         // this.rectangle2.rotation.y = - Math.PI / 5.25
 
-        scene.addObject(this.rectangle2);
+        sceneManager.addObject(this.rectangle2);
     },
 
     startAnimation()
@@ -76,7 +76,7 @@ const bridgeScene = {
         this.act1Object.position.set(0, 0, -4)
         this.act1Object.rotation.set(0, Math.PI / 8 , 0)
         console.log(this.act1Object)
-        scene.addObject(this.act1Object)
+        sceneManager.addObject(this.act1Object)
     },
     bridgeLoop()
     {
