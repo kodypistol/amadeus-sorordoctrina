@@ -21,17 +21,16 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "Lopoly",
-            "rotation" : [
-                -0.008663632906973362,
-                0,
-                0,
-                0.999962568283081
+            "name" : "Body",
+            "scale" : [
+                0.4088503420352936,
+                0.4088503420352936,
+                0.4088503420352936
             ],
             "translation" : [
-                -0.0013066306710243225,
-                2.0077080726623535,
-                0.20945632457733154
+                0.5231072902679443,
+                0.3307877480983734,
+                -0.02417723461985588
             ]
         }
     ],
@@ -50,13 +49,13 @@
                     1
                 ],
                 "metallicFactor" : 0,
-                "roughnessFactor" : 0.5
+                "roughnessFactor" : 0.4000000059604645
             }
         }
     ],
     "meshes" : [
         {
-            "name" : "mesh.004",
+            "name" : "Plane",
             "primitives" : [
                 {
                     "attributes" : {
@@ -77,6 +76,25 @@
                     "indices" : 3,
                     "material" : 0,
                     "mode" : 4
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "extensions" : {
+                        "KHR_draco_mesh_compression" : {
+                            "bufferView" : 1,
+                            "attributes" : {
+                                "POSITION" : 0,
+                                "NORMAL" : 1,
+                                "TEXCOORD_0" : 2
+                            }
+                        }
+                    },
+                    "indices" : 7,
+                    "mode" : 4
                 }
             ]
         }
@@ -89,48 +107,83 @@
     ],
     "images" : [
         {
-            "mimeType" : "image/png",
-            "name" : "Normal_Map",
-            "uri" : "Normal_Map.png"
+            "mimeType" : "image/jpeg",
+            "name" : "Normal_Maps",
+            "uri" : "Normal_Maps.jpg"
         }
     ],
     "accessors" : [
         {
             "componentType" : 5126,
-            "count" : 27517,
+            "count" : 4090,
             "max" : [
-                2.516352415084839,
-                3.3869595527648926,
-                1.6454046964645386
+                1.072731852531433,
+                1.8459876775741577,
+                1.094648838043213
             ],
             "min" : [
-                -3.579073429107666,
-                -2.08760666847229,
-                -1.7677226066589355
+                -3.5671794414520264,
+                -0.8106427192687988,
+                -1.0887525081634521
             ],
             "type" : "VEC3"
         },
         {
             "componentType" : 5126,
-            "count" : 27517,
+            "count" : 4090,
             "type" : "VEC3"
         },
         {
             "componentType" : 5126,
-            "count" : 27517,
+            "count" : 4090,
             "type" : "VEC2"
         },
         {
             "componentType" : 5123,
-            "count" : 119058,
+            "count" : 6912,
+            "type" : "SCALAR"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 328,
+            "max" : [
+                0.9827364683151245,
+                0.20441696047782898,
+                1.0200351476669312
+            ],
+            "min" : [
+                -3.59725284576416,
+                -0.006136864423751831,
+                -1.0198338031768799
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 328,
+            "type" : "VEC3"
+        },
+        {
+            "componentType" : 5126,
+            "count" : 328,
+            "type" : "VEC2"
+        },
+        {
+            "componentType" : 5123,
+            "count" : 576,
             "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 193059,
+            "byteLength" : 13100,
             "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1684,
+            "byteOffset" : 13100
         }
     ],
     "samplers" : [
@@ -141,8 +194,8 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 193060,
-            "uri" : "photoscan_mozart.bin"
+            "byteLength" : 14784,
+            "uri" : "Clavecin.bin"
         }
     ]
 }

@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 class Camera {
     constructor(canvas) {
         // Create a perspective camera
-        this.threeCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+        this.threeCamera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 100);
         this.threeCamera.position.x = 0;
         this.threeCamera.position.y = 0;
         this.threeCamera.position.z = 0;
