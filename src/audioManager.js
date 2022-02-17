@@ -8,7 +8,6 @@ const audioManager = {
     Array.from(playSongsButtons).forEach((button) => {
       button.addEventListener("click", () => {
         this.chooseSong();
-        // display none pop up act
       });
     });
   },
@@ -16,10 +15,10 @@ const audioManager = {
     const sound = new Howl({
       src: [`./audio/act-${actNumber}.mp3`],
       onplay: function () {
-        console.log("voice beginning");
+        console.log(`voice ${actNumber} beginning`);
       },
       onend: function () {
-        console.log("voice finished");
+        console.log(`voice ${actNumber} finished`);
         router.showScreen(nextScene);
       },
     });
@@ -28,14 +27,21 @@ const audioManager = {
 
   chooseSong() {
     switch (router.getCurrentScene()) {
-      case 3:
-        this.playVoice(1, 4);
-        break;
+      // intro
       case 4:
-        this.playVoice(2, 5);
+        this.playVoice(0, 5);
         break;
+      // act1
       case 5:
-        this.playVoice(3, 6);
+        this.playVoice(1, 6);
+        break;
+      // act2
+      case 6:
+        this.playVoice(2, 7);
+        break;
+      // act3
+      case 7:
+        this.playVoice(3, 8);
         break;
     }
   },
