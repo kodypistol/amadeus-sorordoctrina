@@ -70,6 +70,9 @@ const uiManager = {
 
   onStartExperience() {
       router.showScreen(2);
+      setTimeout(() => {
+        router.showScreen(4);
+      }, 3000);
   },
 
   onToggleSubtitles() {
