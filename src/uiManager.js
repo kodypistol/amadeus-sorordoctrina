@@ -69,13 +69,7 @@ const uiManager = {
   },
 
   onStartExperience() {
-    console.log(this.expStarted);
-
-    if(this.expStarted === false){
-      //router.showScreen(2);
-      console.log("START EXPERIENCE");
-      this.expStarted = true;
-    }
+      router.showScreen(2);
   },
 
   onToggleSubtitles() {
