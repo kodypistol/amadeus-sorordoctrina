@@ -5,6 +5,8 @@ import ui from './uiManager';
 import audioManager from './audioManager';
 import experienceManager from "./experienceManager";
 
+import './pointerManager';
+
 // Point d'entrée
 router.init();
 window.addEventListener("load", () =>

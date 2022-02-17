@@ -1,3 +1,16 @@
+const defaultScenography = {
+    pX: 0,
+    pY: 0,
+    pZ: 0,
+    rX: 0,
+    rY: 0,
+    rZ: 0,
+    sX: 1,
+    sY: 1,
+    sZ: 1
+}
+
+
 export default {
     statue: {
         url: './assets3D/mozartStatue/photoscan_mozart.gltf',
@@ -23,5 +36,17 @@ export default {
         sY: 1,
         sZ: 1
     },
+    flask: {
+        url: './assets3D/flask/flask.gltf',
+        ...defaultScenography
+    },
+    harpsichord: {
+        url: './assets3D/harpsichord/harpsichord.gltf',
+        ...defaultScenography
+    },
+    parchment: {
+        url: './assets3D/parchment/parchment.gltf',
+        ...defaultScenography
+    }
 
 }

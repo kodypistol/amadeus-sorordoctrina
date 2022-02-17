@@ -44,8 +44,11 @@ const experienceManager =
 
             loaderManager.loadMultipleGLTFs({
                 statue: assets.statue.url,
-                bridge: assets.bridge.url
-            }, this.onLoadComplete.bind(this))
+                bridge: assets.bridge.url,
+                harpsichord: assets.harpsichord.url,
+                parchment: assets.parchment.url,
+                flask: assets.flask.url,
+            }, this.onLoadComplete.bind(this));
 
 
             // // BIND ==> garder le scope de l'Experience Manager
@@ -116,28 +119,18 @@ const experienceManager =
         onChangeScreen(index)
         {
 
+            console.log(`go to screen ${index} in three js scene`);
+            experienceManager.fillScene(index);
+
             switch(index)
             {
                 case 0:
                     canvas.style.display = 'none';
                     break;
-
                 case 1:
-                    console.log('go to screen1 in three js scene')
                     canvas.style.display = 'block';
-                    experienceManager.fillScene(index);
-                    break;
-                case 2:
-                    console.log('go to screen2 in three js scene')
-                    experienceManager.fillScene(index);
-                    break;
-                case 3:
-                    console.log('go to screen3 in three js scene')
-                    experienceManager.fillScene(index);
                     break;
                 case 4:
-                    console.log('go to screen4 in three js scene')
-                    experienceManager.fillScene(index);
                     audioManager.chooseSong();
                     break;
             }
@@ -147,6 +140,8 @@ const experienceManager =
 
         fillScene(index)
         {
+
+            this.currentObject = this.objects.harpsichord;
 
             switch (index)
             {
