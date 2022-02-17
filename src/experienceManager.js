@@ -108,6 +108,9 @@ const experienceManager =
                     console.log('go to screen3 in three js scene')
                     experienceManager.fillScene(index);
                     break;
+                case 4:
+                    audioManager.chooseSong();
+                    break;
             }
         },
 
