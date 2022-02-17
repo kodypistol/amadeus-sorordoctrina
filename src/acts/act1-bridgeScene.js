@@ -9,11 +9,12 @@ import experienceManager from "../experienceManager";
 const bridgeScene = {
     init()
     {
-        const brickTexture = experienceManager.textures[0]
-        const brickNormalTexture = experienceManager.textures[1]
+        const brickTexture = experienceManager.textures[0];
+        const brickNormalTexture = experienceManager.textures[1];
+        let clone1, clone2;
 
-        experienceManager.directionalLight.intensity = 1
-        sceneManager.addObject(experienceManager.directionalLight)
+        experienceManager.directionalLight.intensity = 1;
+        sceneManager.addObject(experienceManager.directionalLight);
 
         // this.bridgeGroup = new THREE.Group();
         //
@@ -33,12 +34,15 @@ const bridgeScene = {
         // sceneManager.addObject(this.bridgeGroup)
 
         this.bridgeGroup1 = new THREE.Group();
+        this.bridgeGroup1.add(experienceManager.objects.bridge);
 
+        clone1 = experienceManager.objects.bridge.clone();
+        clone1.position.z = -3.350;
+        clone2 = experienceManager.objects.bridge.clone();
+        clone2.position.z = -5.335;
 
-
-        this.bridgeGroup1.add(experienceManager.objects.bridge1.scene)
-        this.bridgeGroup1.add(experienceManager.objects.bridge2.scene)
-        this.bridgeGroup1.add(experienceManager.objects.bridge3.scene)
+        this.bridgeGroup1.add(clone1);
+        this.bridgeGroup1.add(clone2);
 
         sceneManager.addObject(this.bridgeGroup1)
 

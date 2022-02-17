@@ -63,7 +63,7 @@ const loaderManager = {
             console.log('Finish loading : ' + fileToLoad.key);
 
             // ici, on stocke le fichier chargé dans le tableau this.loadedAssets
-            this.loadedAssets[fileToLoad.key] = gltf;
+            this.loadedAssets[fileToLoad.key] = gltf.scene;
             this.queue.shift();
 
 
