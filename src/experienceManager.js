@@ -32,7 +32,7 @@ const experienceManager =
             sceneManager.create(canvas);
 
             this.textures = loaderManager.loadTextures();
-            bridgeScene.init();
+            // bridgeScene.init();
 
             // Renderer
             renderer.init(canvas);
@@ -44,7 +44,9 @@ const experienceManager =
 
             loaderManager.loadMultipleGLTFs({
                 mozart: assets.mozart.url,
-                bridge: assets.bridge.url
+                bridge1: assets.bridge1.url,
+                bridge2: assets.bridge2.url,
+                bridge3: assets.bridge3.url
             }, this.onLoadComplete.bind(this))
 
 
@@ -55,12 +57,6 @@ const experienceManager =
 
         onLoadComplete(){
             // this.setupIntro(loaderManager.loadedAssets.mozart);
-            console.log('loaderManager.loadedAssets : ', loaderManager.loadedAssets)
-            // console.log('typeof (loaderManager.loadedAssets)',typeof (loaderManager.loadedAssets));
-            // console.log('Object.keys(loaderManager.loadedAssets.length)',Object.keys(loaderManager.loadedAssets).length)
-
-            // this.setupIntro(loaderManager.loadedAssets.mozart, assets.mozart, "mozart");
-            // this.setupIntro(loaderManager.loadedAssets.bridge, assets.bridge, "bridge");
             Object.keys(loaderManager.loadedAssets).forEach(idx => {
                 this.setupIntro(loaderManager.loadedAssets[idx], assets[idx], idx);
             })
@@ -74,12 +70,38 @@ const experienceManager =
             this.objects[objectName] = gltf
             //this.objects.bridge = loaderManager.loadedAssets.bridge;
 
+            switch (objectName) {
+                case 'mozart':
+                    console.log('SWITCH CASE MOZART')
+                    this.objects['mozart'].scene.position.set(assets['mozart'].pX, assets['mozart'].pY, assets['mozart'].pZ)
+                    this.objects['mozart'].scene.rotation.set(assets['mozart'].rX, assets['mozart'].rY, assets['mozart'].rZ)
+                    this.objects['mozart'].scene.scale.set(assets['mozart'].sX, assets['mozart'].sY, assets['mozart'].sZ)
+                    break;
 
-            this.objects[objectName].scene.position.set(assetsAttributes.pX, assetsAttributes.pY, assetsAttributes.pZ)
-            this.objects[objectName].scene.rotation.set(assetsAttributes.rX, assetsAttributes.rY, assetsAttributes.rZ)
-            this.objects[objectName].scene.scale.set(assetsAttributes.sX, assetsAttributes.sY, assetsAttributes.sZ)
+                case 'bridge1':
+                    console.log('SWITCH CASE BRIDGE')
+                    this.objects['bridge1'].scene.position.set(assets['bridge1'].pX, assets['bridge1'].pY, assets['bridge1'].pZ)
+                    this.objects['bridge1'].scene.rotation.set(assets['bridge1'].rX, assets['bridge1'].rY, assets['bridge1'].rZ)
+                    this.objects['bridge1'].scene.scale.set(assets['bridge1'].sX, assets['bridge1'].sY, assets['bridge1'].sZ)
 
-            sceneManager.addObject(this.objects[objectName].scene);
+                    break;
+                case 'bridge2':
+                    this.objects['bridge2'].scene.position.set(assets['bridge2'].pX, assets['bridge2'].pY, assets['bridge2'].pZ)
+                    this.objects['bridge2'].scene.rotation.set(assets['bridge2'].rX, assets['bridge2'].rY, assets['bridge2'].rZ)
+                    this.objects['bridge2'].scene.scale.set(assets['bridge2'].sX, assets['bridge2'].sY, assets['bridge2'].sZ)
+                    break;
+                case 'bridge3':
+                    this.objects['bridge3'].scene.position.set(assets['bridge3'].pX, assets['bridge3'].pY, assets['bridge3'].pZ)
+                    this.objects['bridge3'].scene.rotation.set(assets['bridge3'].rX, assets['bridge3'].rY, assets['bridge3'].rZ)
+                    this.objects['bridge3'].scene.scale.set(assets['bridge3'].sX, assets['bridge3'].sY, assets['bridge3'].sZ)
+                    break;
+                default:
+            }
+            // this.objects[objectName].scene.position.set(assetsAttributes.pX, assetsAttributes.pY, assetsAttributes.pZ)
+            // this.objects[objectName].scene.rotation.set(assetsAttributes.rX, assetsAttributes.rY, assetsAttributes.rZ)
+            // this.objects[objectName].scene.scale.set(assetsAttributes.sX, assetsAttributes.sY, assetsAttributes.sZ)
+            //
+            // sceneManager.addObject(this.objects[objectName].scene);
 
 
 
@@ -87,6 +109,7 @@ const experienceManager =
 
         onChangeScreen(index)
         {
+
 
             switch(index)
             {
@@ -98,7 +121,6 @@ const experienceManager =
                     console.log('go to screen1 in three js scene')
                     canvas.style.display = 'block';
                     experienceManager.fillScene(index);
-                    document.querySelector('body').style.backgroundColor = 'yellow'
                     break;
                 case 2:
                     console.log('go to screen2 in three js scene')
@@ -109,6 +131,8 @@ const experienceManager =
                     experienceManager.fillScene(index);
                     break;
                 case 4:
+                    console.log('go to screen4 in three js scene')
+                    experienceManager.fillScene(index);
                     audioManager.chooseSong();
                     break;
             }
@@ -126,41 +150,33 @@ const experienceManager =
                     break;
                 case 1:
 
-                    const directionalLight = new THREE.DirectionalLight(0xfffffff, 0.5)
-                    directionalLight.position.set(-2, 2, 1)
-                    directionalLight.castShadow = true
-                    sceneManager.addObject(directionalLight)
+                    this.directionalLight = new THREE.DirectionalLight(0xfffffff, 1)
+                    this.directionalLight.position.set(-2, 2, 1)
+                    this.directionalLight.castShadow = true
+                    sceneManager.addObject(this.directionalLight)
 
-                    const lightAxisHelper = new THREE.DirectionalLightHelper(directionalLight, 0.5);
-                    sceneManager.addObject(lightAxisHelper)
+                    // const lightAxisHelper = new THREE.DirectionalLightHelper(this.directionalLight, 0.5);
+                    // sceneManager.addObject(lightAxisHelper)
+                    sceneManager.addObject(this.objects['mozart'].scene)
+
 
                     break;
 
                 case 2:
                     // ÉCRAN SCÈNE 3D ACTE 2
                     console.log('acte 2')
-                    console.log(sceneManager.getThreeScene())
-
-
-                    const moveToAct3 = () =>
-                    {
-                        sceneManager.removeObject(this.objects.statue)
-                        setTimeout(() =>
-                        {
-                            router.showScreen(3);
-                        }, 3000)
-                    }
-                    moveToAct3()
-
-                    // gsap.to(this.objects.statue.material, {
-                    //     opacity: 0,
-                    //     onComplete: moveToAct3
-                    // })
-
-
+                    sceneManager.removeObject(this.objects['mozart'].scene)
+                    sceneManager.removeObject(this.directionalLight)
 
                     break;
+
                 case 3:
+                    sceneManager.removeObject(this.objects['mozart'].scene)
+                    sceneManager.removeObject(this.directionalLight)
+                    break;
+
+                case 4:
+                    bridgeScene.init();
                     bridgeScene.startAnimation();
                     bridgeScene.addAct1Object();
                     break;
@@ -183,7 +199,10 @@ const experienceManager =
                 sceneManager.getCamera().update();
 
                 // Start the bridge loop
-                bridgeScene.bridgeLoop();
+                if (router.getCurrentScene() === 4)
+                {
+                    bridgeScene.bridgeLoop();
+                }
 
                 // Render
                 renderer.draw(sceneManager);

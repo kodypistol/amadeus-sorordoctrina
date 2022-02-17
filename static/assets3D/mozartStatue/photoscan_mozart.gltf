@@ -21,28 +21,42 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "SuperBigPhotoscan",
+            "name" : "Lopoly",
             "rotation" : [
+                -0.008663632906973362,
                 0,
-                0.027459528297185898,
                 0,
-                0.9996229410171509
-            ],
-            "scale" : [
-                0.1545497179031372,
-                0.1545497179031372,
-                0.1545497179031372
+                0.999962568283081
             ],
             "translation" : [
-                0.4894821345806122,
-                2.0429060459136963,
-                -0.016125202178955078
+                -0.0013066306710243225,
+                2.0077080726623535,
+                0.20945632457733154
             ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Material",
+            "normalTexture" : {
+                "index" : 0
+            },
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.800000011920929,
+                    0.800000011920929,
+                    0.800000011920929,
+                    1
+                ],
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
         }
     ],
     "meshes" : [
         {
-            "name" : "SuperBigPhotoscan",
+            "name" : "mesh.004",
             "primitives" : [
                 {
                     "attributes" : {
@@ -61,53 +75,73 @@
                         }
                     },
                     "indices" : 3,
+                    "material" : 0,
                     "mode" : 4
                 }
             ]
         }
     ],
+    "textures" : [
+        {
+            "sampler" : 0,
+            "source" : 0
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "Normal_Map",
+            "uri" : "Normal_Map.png"
+        }
+    ],
     "accessors" : [
         {
             "componentType" : 5126,
-            "count" : 55453,
+            "count" : 27517,
             "max" : [
-                15.952445983886719,
-                21.739240646362305,
-                10.590460777282715
+                2.516352415084839,
+                3.3869595527648926,
+                1.6454046964645386
             ],
             "min" : [
-                -22.635147094726562,
-                -13.145915985107422,
-                -10.851319313049316
+                -3.579073429107666,
+                -2.08760666847229,
+                -1.7677226066589355
             ],
             "type" : "VEC3"
         },
         {
             "componentType" : 5126,
-            "count" : 55453,
+            "count" : 27517,
             "type" : "VEC3"
         },
         {
             "componentType" : 5126,
-            "count" : 55453,
+            "count" : 27517,
             "type" : "VEC2"
         },
         {
             "componentType" : 5123,
-            "count" : 139638,
+            "count" : 119058,
             "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 424279,
+            "byteLength" : 193059,
             "byteOffset" : 0
+        }
+    ],
+    "samplers" : [
+        {
+            "magFilter" : 9729,
+            "minFilter" : 9987
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 424280,
+            "byteLength" : 193060,
             "uri" : "photoscan_mozart.bin"
         }
     ]
