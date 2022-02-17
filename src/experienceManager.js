@@ -147,7 +147,6 @@ const experienceManager =
                             router.showScreen(3);
                         }, 3000)
                     }
-
                     moveToAct3()
 
                     // gsap.to(this.objects.statue.material, {

@@ -56,17 +56,12 @@ module.exports = {
 
             // Images
             {
-                test: /\.(jpg|png|gif|svg)$/,
-                use:
-                [
-                    {
-                        loader: 'file-loader',
-                        options:
-                        {
-                            outputPath: 'assets/images/'
-                        }
-                    }
-                ]
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'images/'
+                }
             },
 
             // Fonts
