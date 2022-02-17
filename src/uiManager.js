@@ -1,154 +1,69 @@
 import signal from "signal-js";
 import router from "./router";
 
-// case 0 : Loading screen
-// case 1 : Main menu
-// case 2 : Start screen
-// case 3 : Informations
-// case 4 : Popup acte 1
-// case 5 : Popup acte 2
-// case 6 : Popup acte 3
-// case 7 : End screen
-
 // DOM references
-const loadingSection = document.querySelector("section#loading-section");
-const landingSection = document.querySelector("section#landing-section");
-const startingSection = document.querySelector("section#starting-section");
-const infosSection = document.querySelector("section#infos-section");
-
-const act1Section = document.querySelector("section#act1");
-const act2Section = document.querySelector("section#act2");
-const act3Section = document.querySelector("section#act3");
-const actPopupCloseBtns = document.querySelectorAll("button.playSong");
-
+const playableSections = document.querySelectorAll("section.playable-section");
 const backgroundContainer = document.querySelector("div#background");
 
 const subtitlesContainer = document.querySelector("div#subtitles-container");
 const subtitlesButton = document.querySelector("button#subtitles-toggle");
+const subtitlesContent = document.querySelector("p#subtitles-content");
+
+const subtitles = [
+  "*Une voix mystérieuse prend la parole :* Maria Anna Mozart, bienvenue dans ton inter vitam. Il te reste une dernière étape avant le repos éternel. Aujourd’hui, il est temps de révéler le secret que tu as gardé au fond de toi toutes ces années.",
+  "Tout commence dès ma naissance, en 1751. Père, lui-même musicien, me fait découvrir la musique très tôt. Rapidement, plus qu’un passe-temps, elle devient ma passion et mes parents sont fiers de moi. Interprétation au clavecin, composition d'œuvres.",
+  "Mais, dès 1769, mes 18 ans atteints, le regard de père change. Selon lui, je deviens une femme et ma place n’est plus sur scène, je dois rejoindre le foyer et me marier. Je me retrouve donc déléguée au second plan, tandis que mon frère, lui, continue à briller au travers.",
+  "Le temps passe, et on se retrouve en 1791. Wolfgang vit désormais à Vienne avec sa femme. De mon côté, mes pensées sombres se transforment en un véritable plan d’action. Alors je lève les voiles et je pars en direction de la capitale autrichienne. En suivant mon",
+];
 
 const uiManager = {
     init() {
         // Events
         signal.on("changeScreen", this.onChangeScreen);
-        loadingSection.addEventListener("click", this.onCloseInfos);
 
-        document.querySelector("button#open-infos").addEventListener("click", this.onOpenInfos);
-        document.querySelector("button#close-infos").addEventListener("click", this.onCloseInfos);
-        document.querySelector("button#start-exp-btn").addEventListener("click", this.onStartExp);
-    
+        document.querySelector("button#open-infos").addEventListener("click", () => {router.showScreen(3)});
+        document.querySelector("button#close-infos").addEventListener("click", () => {router.showScreen(1)});
+        document.querySelector("button#start-exp-btn").addEventListener("click", () => {router.showScreen(2)});
+        document.querySelector("button#back-menu-btn").addEventListener("click", () => {router.showScreen(1)});
         subtitlesButton.addEventListener("click", this.onToggleSubtitles);
 
-        for(let i = 0; i < actPopupCloseBtns.length; i++){
-            actPopupCloseBtns[i].addEventListener("click", this.onCloseActPopup());
-        }
+        
+        // Close act popup buttons
+        document.querySelectorAll("button.playSong").forEach((btn) => {
+          btn.addEventListener("click", () => {          
+            document.querySelector("section#act1").classList.remove("active");
+            document.querySelector("section#act2").classList.remove("active");
+            document.querySelector("section#act3").classList.remove("active");
+          });
+        });
     },
 
     onChangeScreen(index){
-        // Active / unactive DOM
-        switch(index){
-            case 0:
-                loadingSection.classList.add("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 1:
-                loadingSection.classList.remove("active");
-                landingSection.classList.add("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                break;
-            case 2:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.add("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 3:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.add("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 4:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                subtitlesButton.classList.add("active");
-                break;
-            case 5:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.add("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.remove("active");
-                break;
-            case 6:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.add("active");
-                act3Section.classList.remove("active");
-                break;
-            case 7:
-                loadingSection.classList.remove("active");
-                landingSection.classList.remove("active");
-                startingSection.classList.remove("active");
-                infosSection.classList.remove("active");
-                act1Section.classList.remove("active");
-                act2Section.classList.remove("active");
-                act3Section.classList.add("active");
-                break;
+      // Playables sections
+      for(let i = 0; i < playableSections.length; i++){
+        if(i == index)
+          playableSections[i].classList.add("active");
+        else
+          playableSections[i].classList.remove("active");
+      }
+
+      // Subtitles
+      if(index > 3 && index < 8) {
+        if(index == 4) {
+          subtitlesButton.classList.add("active"); // Show subtitles toggle
         }
-
-        // Update background positions
-        backgroundContainer.className = "step-" + index;
+        
+        subtitlesContent.innerHTML = subtitles[index - 4]; // Update subtitles text
+      }
+      else // Don't show subtitle toggle if there is no subtitles
+        subtitlesButton.classList.remove("active");
+      
+      // Background positions and colors
+      backgroundContainer.className = "step-" + index;
     },
-
-  onOpenInfos() {
-    router.showScreen(3);
-  },
-
-  onCloseInfos() {
-    router.showScreen(1);
-  },
-
-  onCloseActPopup() {
-    act1Section.classList.remove("active");
-    act2Section.classList.remove("active");
-    act3Section.classList.remove("active");
-  },
-
-  onStartExp() {
-    router.showScreen(2);
-    setTimeout(() => {
-      router.showScreen(4);
-    }, 3000);
-  },
 
   onToggleSubtitles() {
       subtitlesContainer.classList.toggle("active");
-  },
-
-  hideSubtitles() {
-      subtitlesContainer.classList.remove("active");
   }
 };
 

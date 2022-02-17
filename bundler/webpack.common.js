@@ -55,14 +55,14 @@ module.exports = {
             },
 
             // Images
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    outputPath: 'images/'
-                }
-            },
+            // {
+            //     test: /\.(png|jpg|gif|svg)$/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name: '[name].[ext]',
+            //         outputPath: 'images/'
+            //     }
+            // },
 
             // Fonts
             {

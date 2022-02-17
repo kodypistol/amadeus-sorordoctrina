@@ -147,7 +147,7 @@ const experienceManager =
                         sceneManager.removeObject(this.objects.statue)
                         setTimeout(() =>
                         {
-                            router.showScreen(3);
+                            router.showScreen(4);
                         }, 3000)
                     }
                     moveToAct3()

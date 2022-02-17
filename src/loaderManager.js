@@ -32,48 +32,48 @@ const loaderManager = {
          * Version ForEach
          */
 
-        Object.keys(objects).forEach((k) => {
-            console.log('Start loading : ' + k);
+        // Object.keys(objects).forEach((k) => {
+        //     console.log('Start loading : ' + k);
 
-            this.loadGLTF(objects[k], (gltf) => {
+        //     this.loadGLTF(objects[k], (gltf) => {
 
 
-                // ici, on stocke le fichier chargé dans le tableau this.loadedAssets
-                this.loadedAssets[k] = gltf;
-                console.log('this.loadedAssets[k]=======',this.loadedAssets[k]);
-                console.log('this.loadedAssets.mozart=======',this.loadedAssets.mozart);
-                console.log('this.loadedAssets[\'mozart\']=======',this.loadedAssets['mozart']);
+        //         // ici, on stocke le fichier chargé dans le tableau this.loadedAssets
+        //         this.loadedAssets[k] = gltf;
+        //         console.log('this.loadedAssets[k]=======',this.loadedAssets[k]);
+        //         console.log('this.loadedAssets.mozart=======',this.loadedAssets.mozart);
+        //         console.log('this.loadedAssets[\'mozart\']=======',this.loadedAssets['mozart']);
 
-                console.log('Finish loading : ' + k);
+        //         console.log('Finish loading : ' + k);
 
-            });
+        //     });
 
-        });
+        // });
 
-        this.onFinishQueue()
+        // this.onFinishQueue()
 
         /**
          * Version Récursive
          */
-        // const fileToLoad = this.queue[0];
-        // console.log('Start loading : ' + fileToLoad.key);
-        //
-        //
-        // this.loadGLTF(fileToLoad.url, (gltf) => {
-        //     console.log('Finish loading : ' + fileToLoad.key);
-        //
-        //     // ici, on stocke le fichier chargé dans le tableau this.loadedAssets
-        //     this.loadedAssets[fileToLoad.key] = gltf;
-        //     this.queue.shift();
-        //
-        //
-        //     if(this.queue.length > 0) {
-        //         this.loadQueue();
-        //     } else {
-        //         this.onFinishQueue()
-        //     }
-        //
-        // });
+     const fileToLoad = this.queue[0];
+     console.log('Start loading : ' + fileToLoad.key);
+    
+    
+     this.loadGLTF(fileToLoad.url, (gltf) => {
+         
+    
+         // ici, on stocke le fichier chargé dans le tableau this.loadedAssets
+         this.loadedAssets[fileToLoad.key] = gltf;
+         this.queue.shift();
+    
+    
+         if(this.queue.length > 0) {
+             this.loadQueue();
+         } else {
+             this.onFinishQueue()
+         }
+    
+     });
     },
 
     onFinishQueue(){
