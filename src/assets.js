@@ -42,11 +42,27 @@ export default {
     },
     harpsichord: {
         url: './assets3D/harpsichord/harpsichord.gltf',
-        ...defaultScenography
+        pX: 0.360,
+        pY: -0.580,
+        pZ: -2.360,
+        rX: -3.002,
+        rY: -0.908,
+        rZ: -3.101,
+        sX: 1,
+        sY: 1,
+        sZ: 1
     },
-    parchment: {
+    parchemin: {
         url: './assets3D/parchment/parchment.gltf',
-        ...defaultScenography
+        pX: 0,
+        pY: -0.460,
+        pZ: -1.800,
+        rX: 0,
+        rY: 0,
+        rZ: 0,
+        sX: 0.5,
+        sY: 0.5,
+        sZ: 0.5
     }
 
 }

@@ -41,6 +41,15 @@ const uiManager = {
         for(let i = 0; i < actPopupCloseBtns.length; i++){
             actPopupCloseBtns[i].addEventListener("click", this.onCloseActPopup());
         }
+
+        document.querySelectorAll("button.playSong").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.querySelector("section#act1").classList.remove("active");
+                document.querySelector("section#act2").classList.remove("active");
+                document.querySelector("section#act3").classList.remove("active");
+            });
+        });
+
     },
 
     onChangeScreen(index){
