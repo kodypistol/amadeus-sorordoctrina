@@ -1,8 +1,8 @@
-import * as THREE from 'three';
-import signal from 'signal-js';
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
-import gsap from 'gsap'
+import * as THREE from "three";
+import signal from "signal-js";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import gsap from "gsap";
 
 import sceneManager from "./scene";
 import renderer from "./renderer";
@@ -10,6 +10,8 @@ import loaderManager from './loaderManager'
 import assets from './assets'
 import Camera from './Camera';
 import bridgeScene from './acts/act1-bridgeScene'
+import Camera from "./Camera";
+import audioManager from "./audioManager";
 import bridgeLoop from "./archives/BridgeLoop";
 import router from "./router";
 
