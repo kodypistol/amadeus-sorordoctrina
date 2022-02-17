@@ -19,7 +19,7 @@ const canvas = document.querySelector("canvas.webgl");
 const experienceManager =
     {
         objects: {
-            mozart: 321,
+            statue: null,
             bridge: null,
             clavecin: null,
             parchemin: null,
@@ -32,7 +32,7 @@ const experienceManager =
             sceneManager.create(canvas);
 
             this.textures = loaderManager.loadTextures();
-            bridgeScene.init();
+            // bridgeScene.init();
 
             // Renderer
             renderer.init(canvas);
@@ -43,9 +43,12 @@ const experienceManager =
             signal.on('changeScreen', this.onChangeScreen)
 
             loaderManager.loadMultipleGLTFs({
-                mozart: assets.mozart.url,
-                bridge: assets.bridge.url
-            }, this.onLoadComplete.bind(this))
+                statue: assets.statue.url,
+                bridge: assets.bridge.url,
+                harpsichord: assets.harpsichord.url,
+                parchemin: assets.parchemin.url,
+                flask: assets.flask.url,
+            }, this.onLoadComplete.bind(this));
 
 
             // // BIND ==> garder le scope de l'Experience Manager
@@ -54,59 +57,37 @@ const experienceManager =
         },
 
         onLoadComplete(){
-            // this.setupIntro(loaderManager.loadedAssets.mozart);
-            console.log('loaderManager.loadedAssets : ', loaderManager.loadedAssets)
-            // console.log('typeof (loaderManager.loadedAssets)',typeof (loaderManager.loadedAssets));
-            // console.log('Object.keys(loaderManager.loadedAssets.length)',Object.keys(loaderManager.loadedAssets).length)
-
-            // this.setupIntro(loaderManager.loadedAssets.mozart, assets.mozart, "mozart");
-            // this.setupIntro(loaderManager.loadedAssets.bridge, assets.bridge, "bridge");
-            Object.keys(loaderManager.loadedAssets).forEach(idx => {
-                this.setupIntro(loaderManager.loadedAssets[idx], assets[idx], idx);
-            })
+            this.objects = loaderManager.loadedAssets;
+            this.placeObjects();
             router.showScreen(1)
         },
 
-        setupIntro(gltf, assetsAttributes, objectName){
+        placeObjects() {
+            const objectToBePlaced = ['statue', 'bridge', 'harpsichord', 'flask', 'parchemin'];
+            objectToBePlaced.forEach((objectName) => {
+                this.placeMesh(this.objects[objectName], assets[objectName]);
+            });
+        },
 
-
-            console.log('Object name : ', objectName)
-            this.objects[objectName] = gltf
-            //this.objects.bridge = loaderManager.loadedAssets.bridge;
-
-
-            this.objects[objectName].scene.position.set(assetsAttributes.pX, assetsAttributes.pY, assetsAttributes.pZ)
-            this.objects[objectName].scene.rotation.set(assetsAttributes.rX, assetsAttributes.rY, assetsAttributes.rZ)
-            this.objects[objectName].scene.scale.set(assetsAttributes.sX, assetsAttributes.sY, assetsAttributes.sZ)
-
-            sceneManager.addObject(this.objects[objectName].scene);
-
-
-
+        placeMesh(mesh, data) {
+            mesh.position.set(data.pX, data.pY, data.pZ);
+            mesh.rotation.set(data.rX, data.rY, data.rZ);
+            mesh.scale.set(data.sX, data.sY, data.sZ);
         },
 
         onChangeScreen(index)
         {
+
+            console.log(`go to screen ${index} in three js scene`);
+            experienceManager.fillScene(index);
 
             switch(index)
             {
                 case 0:
                     canvas.style.display = 'none';
                     break;
-
                 case 1:
-                    console.log('go to screen1 in three js scene')
                     canvas.style.display = 'block';
-                    experienceManager.fillScene(index);
-                    document.querySelector('body').style.backgroundColor = 'yellow'
-                    break;
-                case 2:
-                    console.log('go to screen2 in three js scene')
-                    experienceManager.fillScene(index);
-                    break;
-                case 3:
-                    console.log('go to screen3 in three js scene')
-                    experienceManager.fillScene(index);
                     break;
                 case 4:
                     audioManager.chooseSong();
@@ -119,6 +100,8 @@ const experienceManager =
         fillScene(index)
         {
 
+            // this.currentObject = this.objects.harpsichord;
+
             switch (index)
             {
                 case 0:
@@ -126,43 +109,52 @@ const experienceManager =
                     break;
                 case 1:
 
-                    const directionalLight = new THREE.DirectionalLight(0xfffffff, 0.5)
-                    directionalLight.position.set(-2, 2, 1)
-                    directionalLight.castShadow = true
-                    sceneManager.addObject(directionalLight)
+                    this.directionalLight = new THREE.DirectionalLight(0xfffffff, 1)
+                    this.directionalLight.position.set(-2, 2, 1)
+                    // this.directionalLight.castShadow = true
+                    sceneManager.addObject(this.directionalLight)
 
-                    const lightAxisHelper = new THREE.DirectionalLightHelper(directionalLight, 0.5);
-                    sceneManager.addObject(lightAxisHelper)
-
+                    // const lightAxisHelper = new THREE.DirectionalLightHelper(this.directionalLight, 0.5);
+                    // sceneManager.addObject(lightAxisHelper)
+                    sceneManager.addObject(this.objects.statue)
                     break;
 
                 case 2:
                     // ÉCRAN SCÈNE 3D ACTE 2
                     console.log('acte 2')
-                    console.log(sceneManager.getThreeScene())
-
-
-                    const moveToAct3 = () =>
-                    {
-                        sceneManager.removeObject(this.objects.statue)
-                        setTimeout(() =>
-                        {
-                            router.showScreen(4);
-                        }, 3000)
-                    }
-                    moveToAct3()
-
-                    // gsap.to(this.objects.statue.material, {
-                    //     opacity: 0,
-                    //     onComplete: moveToAct3
-                    // })
-
-
-
+                    sceneManager.removeObject(this.objects.statue)
+                    sceneManager.removeObject(this.directionalLight)
                     break;
+                
                 case 3:
+                    sceneManager.removeObject(this.objects.statue)
+                    sceneManager.removeObject(this.directionalLight)
+                    break;
+
+                case 4:
+                    sceneManager.addObject(this.objects.statue)
+                    this.objects.statue.position.set(0, -0.330, -2.660)
+                    this.objects.statue.rotation.set(0.170, - 1.6 * Math.PI, 0)
+                    this.objects.statue.scale.set(0.250, 0.250, 0.250)
+                    bridgeScene.init();
                     bridgeScene.startAnimation();
-                    bridgeScene.addAct1Object();
+                    bridgeScene.addActBridgeObject();
+                    break;
+                case 5:
+                    sceneManager.removeObject(this.objects.statue)
+
+                    sceneManager.addObject(this.objects.harpsichord)
+                    break;
+                case 6:
+                    sceneManager.removeObject(this.objects.harpsichord)
+                    sceneManager.addObject(this.objects.parchemin)
+                    break;
+                case 7:
+                    sceneManager.removeObject(this.objects.parchemin)
+                    sceneManager.addObject(this.objects.flask)
+                    break;
+                case 8:
+                    sceneManager.removeObject(this.objects.flask)
                     break;
                 default:
             }
@@ -183,7 +175,13 @@ const experienceManager =
                 sceneManager.getCamera().update();
 
                 // Start the bridge loop
-                bridgeScene.bridgeLoop();
+                if (router.getCurrentScene() === 4 ||
+                    router.getCurrentScene() === 5 ||
+                    router.getCurrentScene() === 6
+                )
+                {
+                    bridgeScene.bridgeLoop();
+                }
 
                 // Render
                 renderer.draw(sceneManager);
