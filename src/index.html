@@ -12,7 +12,7 @@
     <canvas class="webgl"></canvas>
     
     <!-- Loading -->
-    <section id="loading-section">
+    <section class="playable-section" id="loading-section">
         <div class="container">
             <h2>Patientez...</h2>
 
@@ -22,7 +22,7 @@
     </section>
 
     <!-- Landing -->
-    <section id="landing-section">
+    <section class="playable-section" id="landing-section">
         <div class="container">
             <button class="toggle-infos" id="open-infos"> i </button>
 
@@ -38,8 +38,17 @@
         </button>
     </section>
 
+    <!-- Starting exp -->
+    <section class="playable-section starting"  id="starting-section">
+        <div class="container">
+            <h2>Inspiré de faits réels</h2>
+            <svg width="273" height="255" viewBox="0 0 273 255" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M136.575 1.00453C69.6532 1.00453 15.2852 55.4436 15.2852 122.462C15.2852 127.222 15.6597 131.928 16.1943 136.578C0.431295 149.767 -4.09138 172.865 6.49002 191.313L30.3444 232.848C42.1621 253.451 68.387 260.489 88.8643 248.589L88.8666 248.584C88.9004 248.587 88.9343 248.587 88.9681 248.584L100.995 241.576V241.578C104.047 239.77 105.083 235.83 103.319 232.744L43.078 127.743C41.7675 125.398 39.1576 124.107 36.5094 124.494C35.7244 124.625 34.971 124.9 34.2853 125.305L28.4229 128.758C28.3169 126.676 28.2199 124.585 28.2199 122.462C28.2199 62.4901 76.614 14.0035 136.569 14.0035C196.521 14.0035 244.918 62.4901 244.918 122.462C244.918 124.585 244.821 126.676 244.715 128.758L238.853 125.305H238.857C237.72 124.662 236.416 124.378 235.117 124.494C233.004 124.677 231.116 125.892 230.064 127.743L169.824 232.744H169.821C168.057 235.83 169.095 239.77 172.147 241.578L184.174 248.587V248.584C184.208 248.587 184.242 248.587 184.276 248.584C204.753 260.485 230.978 253.449 242.796 232.843L266.65 191.309C277.234 172.86 272.709 149.763 256.946 136.573C257.481 131.926 257.855 127.218 257.855 122.457C257.855 55.4379 203.492 1 136.565 1L136.575 1.00453Z" stroke="white" stroke-opacity="0.5" stroke-width="0.570667" stroke-linejoin="round"/></svg>
+            <p>Nous vous recommandons d’utiliser des écouteurs externes pour profiter pleinement de l’expérience.</p>
+        </div>
+    </section>
+    
     <!-- Informations -->
-    <section id="infos-section">
+    <section class="playable-section" id="infos-section">
         <div class="container">
             <button class="toggle-infos" id="close-infos">X</button>
 
@@ -55,7 +64,7 @@
             </div>
 
             <div class="flex">
-                <img src="https://picsum.photos/100/200" alt="">
+                <img src="../static/images/parchemin.png" alt="">
                 <p>
                     <strong>Crédits</strong><br>
                     Écriture : Clément Calles, Anaïs Mancho <br>
@@ -69,51 +78,57 @@
         </div>
     </section>
 
-    <!-- Starting exp -->
-    <section class="starting"  id="starting-section">
-        <div class="container">
-            <h2>Inspiré de faits réels</h2>
-            <svg width="273" height="255" viewBox="0 0 273 255" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M136.575 1.00453C69.6532 1.00453 15.2852 55.4436 15.2852 122.462C15.2852 127.222 15.6597 131.928 16.1943 136.578C0.431295 149.767 -4.09138 172.865 6.49002 191.313L30.3444 232.848C42.1621 253.451 68.387 260.489 88.8643 248.589L88.8666 248.584C88.9004 248.587 88.9343 248.587 88.9681 248.584L100.995 241.576V241.578C104.047 239.77 105.083 235.83 103.319 232.744L43.078 127.743C41.7675 125.398 39.1576 124.107 36.5094 124.494C35.7244 124.625 34.971 124.9 34.2853 125.305L28.4229 128.758C28.3169 126.676 28.2199 124.585 28.2199 122.462C28.2199 62.4901 76.614 14.0035 136.569 14.0035C196.521 14.0035 244.918 62.4901 244.918 122.462C244.918 124.585 244.821 126.676 244.715 128.758L238.853 125.305H238.857C237.72 124.662 236.416 124.378 235.117 124.494C233.004 124.677 231.116 125.892 230.064 127.743L169.824 232.744H169.821C168.057 235.83 169.095 239.77 172.147 241.578L184.174 248.587V248.584C184.208 248.587 184.242 248.587 184.276 248.584C204.753 260.485 230.978 253.449 242.796 232.843L266.65 191.309C277.234 172.86 272.709 149.763 256.946 136.573C257.481 131.926 257.855 127.218 257.855 122.457C257.855 55.4379 203.492 1 136.565 1L136.575 1.00453Z" stroke="white" stroke-opacity="0.5" stroke-width="0.570667" stroke-linejoin="round"/></svg>
-            <p>Nous vous recommandons d’utiliser des écouteurs externes pour profiter pleinement de l’expérience.</p>
-        </div>
-    </section>
-
+    <!-- Subtitles popup -->
     <div class="subtitles active">
         <button id="subtitles-toggle">CC</button>
-        <div class="subtitles-container" id="subtitles-container">
-            <p>
+        <div class="subtitles-container custom-container" id="subtitles-container">
+            <p id="subtitles-content">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec dignissim ligula. Etiam sagittis eros metus, a cursus lacus venenatis vestibulum. Mauris hendrerit eu orci id auctor. Proin non metus velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam eget leo sit amet eros molestie dictum eget sed est. Pellentesque eget arcu sed quam consequat feugiat vitae ut neque. Quisque pulvinar in ex eget luctus. Curabitur sit amet tortor scelerisque, accumsan libero at, commodo lectus.
                 Etiam pretium finibus dolor sed porta. Quisque vel nisl eget felis porta sollicitudin sed in elit. Vivamus sit amet viverra diam. Mauris ut est ante. Phasellus vitae augue feugiat, sagittis justo in, convallis purus. Morbi semper leo orci, sit amet vehicula massa fringilla non. In lacinia leo lacus, sed elementum purus fermentum ac. Suspendisse ultricies laoreet luctus. Praesent congue tortor vitae tortor scelerisque finibus. Praesent at malesuada metus. Etiam est sem, euismod a enim convallis, bibendum congue ligula. Curabitur molestie nec lectus ac dictum. Nam elit lorem, accumsan at dolor at, consequat suscipit justo. Nunc auctor luctus massa, laoreet finibus nunc feugiat sit amet.
             </p>
         </div>
     </div>
 
-    <!-- Actes -->
-    <section class="act first" id="act1">
+    <!-- Story acts -->
+    <section class="playable-section"></section> <!-- Introduction -->
+
+    <section class="playable-section act first" id="act1">
         <div class="container">
             <h2>Acte 1</h2>
             <p>-</p>
             <h2>La genèse d’une fratrie</h2>
-            <button class="playSong"><h3>Commencer l'histoire</h3></button>
+            <button class="playSong custom-btn"><h3>Commencer l'histoire</h3></button>
         </div>
     </section>
 
-    <section class="act second" id="act2">
+    <section class="playable-section act second" id="act2">
         <div class="container">
             <h2>Acte 2</h2>
             <p>-</p>
             <h2>Voleur de rêves</h2>
-            <button class="playSong"><h3>Continuer l'histoire</h3></button>
+            <button class="playSong custom-btn"><h3>Continuer l'histoire</h3></button>
         </div>
     </section>
 
-    <section class="act third" id="act3">
+    <section class="playable-section act third" id="act3">
         <div class="container">
             <h2>Acte 3</h2>
             <p>-</p>
             <h2>Un meurtre maquillé</h2>
-            <button class="playSong"><h3>Continuer l'histoire</h3></button>
+            <button class="playSong custom-btn"><h3>Continuer l'histoire</h3></button>
         </div>
+    </section>
+
+    <!-- End screen -->
+    <section class="playable-section end" id="end-section">
+        <div class="custom-container">
+            <p>
+                Vous venez de vivre pleinement l’expérience de l’une des théories sur la mort de Mozart.
+                Il est important de rappeler que l’histoire est basée sur des faits historiques réels, même si le dénouement reste une simple théorie. <br> <br>
+                Nous vous invitons à découvrir au plus vite les nombreuses autres théories autour de cette mystérieuse mort...
+            </p>
+                <button class="custom-btn" id="back-menu-btn"><h3>Revenir à l’accueil</h3></button>
+            </div>
     </section>
 
     <!-- Background -->

@@ -216,7 +216,6 @@ section {
 
 /* Informations */
 #infos-section {
-  
   .center {
     margin-top: 120px;
     margin-bottom: 50px;
@@ -226,13 +225,20 @@ section {
 
   .flex {
     justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+
     p {
       font-size: 14px;
-      max-width: 60vw;
+      width: 50%;
 
       strong {
         font-weight: bold;
       }
+    }
+
+    img {
+      width: 50%;
     }
   }
 }
@@ -303,7 +309,7 @@ section {
   }
 
   /* Third step */
-  &.step-2 {
+  &.step-2, &.step-3 {
     li:first-child {
       transform: translate(75vw, -6vh) scale(10);
     }
@@ -314,11 +320,6 @@ section {
       transform: translate(0vw, 30vh) scale(15);
       opacity: 0.5;
     }
-  }
-
-  /* Fourth step */
-  &.step-3 {
-
   }
 
   /* Five step */
@@ -347,7 +348,7 @@ section {
     }
   }
 
-  &.step-7 {
+  &.step-7, &.step-8 {
     background-color: #1e1e1f;
 
     li {
@@ -359,6 +360,7 @@ section {
 
 /* Actes */
 .act {
+  display: none;
   position: absolute;
   left: 50vw;
   top: 50vh;
@@ -367,6 +369,10 @@ section {
   width: 90vw;
   height: 100vw;
   border-radius: 14px;
+
+  &.active {
+    display: block;
+  }
 
   .container {
     border: 1.5px solid #ffffffca;
@@ -381,21 +387,6 @@ section {
   }
   h2:not(:first-child) {
     margin-bottom: 60px;
-  }
-
-  button {
-    display: block;
-    margin: 0 auto;
-    padding: 15px;
-    background-color: transparent;
-    border: 1.5px solid #ffffffca;
-    border-radius: 14px;
-    cursor: pointer;
-
-    h3 {
-      margin: 0;
-      padding: 0;
-    }
   }
 }
 
@@ -428,11 +419,6 @@ section {
     width: 90vw;
     height: 30vw;
 
-    padding: 10px 20px;
-    background-color: #33333386;
-    border: 1px solid white;
-    border-radius: 14px;
-
     &.active {
       display: block;
     }
@@ -444,5 +430,44 @@ section {
       overflow-y: scroll;
       line-height: 20px;
     }
+  }
+}
+
+/* End */
+section#end-section {
+  .custom-container {
+    position: absolute;
+    width: 90vw;
+    bottom: 40px;
+    left: 50vw;
+    transform: translateX(-50%);
+      
+    p {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+  }
+
+}
+
+.custom-container {
+    padding: 10px 20px;
+    background-color: #33333386;
+    border: 1px solid white;
+    border-radius: 14px;
+}
+
+.custom-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: transparent;
+  border: 1.5px solid #ffffffca;
+  border-radius: 14px;
+  cursor: pointer;
+
+  h3 {
+    margin: 0;
+    padding: 0;
   }
 }
