@@ -8,7 +8,6 @@ import sceneManager from "./scene";
 import renderer from "./renderer";
 import loaderManager from './loaderManager'
 import assets from './assets'
-import Camera from './Camera';
 import bridgeScene from './acts/act1-bridgeScene'
 import Camera from "./Camera";
 import audioManager from "./audioManager";
@@ -108,6 +107,9 @@ const experienceManager =
                 case 3:
                     console.log('go to screen3 in three js scene')
                     experienceManager.fillScene(index);
+                    break;
+                case 4:
+                    audioManager.chooseSong();
                     break;
             }
         },
