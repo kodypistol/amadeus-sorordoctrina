@@ -27,6 +27,10 @@ const renderer = {
 
     draw(scene){
         this.threeRenderer.render(scene.getThreeScene(), scene.getThreeCamera());
+    },
+
+    getThreeRenderer(){
+        return this.threeRenderer;
     }
 }
 

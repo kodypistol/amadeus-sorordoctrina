@@ -13,6 +13,7 @@ import Camera from "./Camera";
 import audioManager from "./audioManager";
 import bridgeLoop from "./archives/BridgeLoop";
 import router from "./router";
+import pointerManager from "./pointerManager";
 
 const canvas = document.querySelector("canvas.webgl");
 
@@ -34,13 +35,18 @@ const experienceManager =
             this.textures = loaderManager.loadTextures();
             // bridgeScene.init();
 
+
+
             // Renderer
             renderer.init(canvas);
 
-            // Tick loop
-            this.startLoopExperience(2);
-
             signal.on('changeScreen', this.onChangeScreen)
+
+
+
+            // Tick loop
+            this.startLoopExperience();
+
 
             loaderManager.loadMultipleGLTFs({
                 statue: assets.statue.url,
@@ -53,13 +59,15 @@ const experienceManager =
 
             // // BIND ==> garder le scope de l'Experience Manager
             // loaderManager.loadGLTF(assets.mozart, this.setupIntro.bind(this))
-
         },
 
         onLoadComplete(){
             this.objects = loaderManager.loadedAssets;
             this.placeObjects();
-            router.showScreen(1)
+            router.showScreen(1);
+
+            // Pointer manager, for turning meshes feature
+            pointerManager.init();
         },
 
         placeObjects() {
@@ -142,7 +150,6 @@ const experienceManager =
                     break;
                 case 5:
                     sceneManager.removeObject(this.objects.statue)
-
                     sceneManager.addObject(this.objects.harpsichord)
                     break;
                 case 6:
@@ -151,6 +158,7 @@ const experienceManager =
                     break;
                 case 7:
                     sceneManager.removeObject(this.objects.parchemin)
+                    console.log(this.objects.flask)
                     sceneManager.addObject(this.objects.flask)
                     break;
                 case 8:
@@ -174,6 +182,7 @@ const experienceManager =
                 // Update controls
                 sceneManager.getCamera().update();
 
+
                 // Start the bridge loop
                 if (router.getCurrentScene() === 4 ||
                     router.getCurrentScene() === 5 ||
@@ -182,6 +191,7 @@ const experienceManager =
                 {
                     bridgeScene.bridgeLoop();
                 }
+
 
                 // Render
                 renderer.draw(sceneManager);

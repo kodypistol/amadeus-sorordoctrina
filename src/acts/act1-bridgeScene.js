@@ -54,7 +54,6 @@ const bridgeScene = {
     },
     bridgeLoop()
     {
-        console.log('s\'arrete t elle vraiment ?')
         this.bridgeGroup1.position.z = this.bridgeGroup1.position.z + 0.002
         this.bridgeGroup2.position.z = this.bridgeGroup2.position.z + 0.002
 

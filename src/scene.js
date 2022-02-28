@@ -27,6 +27,14 @@ const sceneManager = {
 
     removeObject(obj){
         this.scene.remove(obj);
+    },
+    getCurrentObject(){
+        switch (this.getCurrentScene())
+        {
+            case 1:
+                return
+                break;
+        }
     }
 }
 
