@@ -157,7 +157,7 @@ const experienceManager =
                     sceneManager.removeObject(this.objects.statue)
                     sceneManager.removeObject(this.directionalLight)
                     break;
-
+                
                 case 3:
                     sceneManager.removeObject(this.objects.statue)
                     sceneManager.removeObject(this.directionalLight)
