@@ -1,5 +1,6 @@
 import signal from "signal-js";
 import router from "./router";
+import bridgeScene from "./acts/act1-bridgeScene";
 
 // case 0 : Loading screen
 // case 1 : Main menu
@@ -148,6 +149,7 @@ const uiManager = {
   onStartExp() {
     router.showScreen(2);
     setTimeout(() => {
+
       router.showScreen(4);
     }, 3000);
   },

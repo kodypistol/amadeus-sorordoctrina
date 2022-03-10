@@ -1,5 +1,8 @@
 import experienceManager from "./experienceManager";
 import router from "./router";
+import renderer from './renderer'
+import {ObjectControls} from "threejs-object-controls";
+import sceneManager from "./scene";
 
 const pointerManager = {
     init(){
@@ -13,8 +16,6 @@ const pointerManager = {
 
         window.addEventListener('touchmove',(e) => {
 
-            console.log(experienceManager.objects.statue)
-
             let distanceX = e.touches[0].clientX - startX;
             let distanceY = e.touches[0].clientY - startY;
 
@@ -22,17 +23,17 @@ const pointerManager = {
                 case 1:
                     console.log('statue')
                     experienceManager.objects.statue.rotation.y =  (distanceX * (Math.PI * 0.0002)) + 1;
-                    experienceManager.objects.statue.rotation.z =  distanceY * (Math.PI * 0.0002);
+                    experienceManager.objects.statue.rotation.z =  distanceY * (Math.PI * 0.00002);
                     break;
                 case 4:
                     console.log('statue')
                     experienceManager.objects.statue.rotation.y =  (distanceX * (Math.PI * 0.0002)) + 1;
-                    experienceManager.objects.statue.rotation.z =  distanceY * (Math.PI * 0.0002);
+                    experienceManager.objects.statue.rotation.z =  distanceY * (Math.PI * 0.00008);
                     break;
                 case 5:
                     console.log('clavecin')
-                    experienceManager.objects.harpsichord.rotation.y =  (distanceX * (Math.PI * 0.0002)) + 1;
-                    experienceManager.objects.harpsichord.rotation.z =  distanceY * (Math.PI * 0.0002);
+                    experienceManager.objects.harpsichord.rotation.y =  -0.908 - ( ( distanceX * (Math.PI * 0.0002) ) );
+                    experienceManager.objects.harpsichord.rotation.z =  -3.101 - (distanceY * (Math.PI * 0.0001) - 0.25);
                     break;
                 case 6:
                     console.log('parchemin')
@@ -50,6 +51,14 @@ const pointerManager = {
                     break;
             }
         });
+        const canvas = document.querySelector("canvas.webgl");
+
+        console.log('work')
+
+
+    },
+    getControls(){
+        return this.controls;
     }
 }
 

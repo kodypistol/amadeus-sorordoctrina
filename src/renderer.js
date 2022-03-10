@@ -30,7 +30,7 @@ const renderer = {
     },
 
     getThreeRenderer(){
-        return this.threeRenderer;
+        return this.threeRenderer.domElement;
     }
 }
 
