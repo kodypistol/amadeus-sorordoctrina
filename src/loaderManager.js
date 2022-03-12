@@ -29,30 +29,6 @@ const loaderManager = {
     loadQueue(objects) {
 
         /**
-         * Version ForEach
-         */
-
-        // Object.keys(objects).forEach((k) => {
-        //     console.log('Start loading : ' + k);
-        //
-        //     this.loadGLTF(objects[k], (gltf) => {
-        //
-        //
-        //         // ici, on stocke le fichier chargé dans le tableau this.loadedAssets
-        //         this.loadedAssets[k] = gltf;
-        //         console.log('this.loadedAssets[k]=======',this.loadedAssets[k]);
-        //         console.log('this.loadedAssets.mozart=======',this.loadedAssets.mozart);
-        //         console.log('this.loadedAssets[\'mozart\']=======',this.loadedAssets['mozart']);
-        //
-        //         console.log('Finish loading : ' + k);
-        //
-        //     });
-        //
-        // });
-        //
-        // this.onFinishQueue()
-
-        /**
          * Version Récursive
          */
         const fileToLoad = this.queue[0];
