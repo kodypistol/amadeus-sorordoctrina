@@ -100,7 +100,6 @@ const experienceManager =
                     break;
                 case 1:
                     canvas.style.display = 'block';
-
                     break;
                 case 4:
                     audioManager.chooseSong();
