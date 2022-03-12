@@ -23,10 +23,10 @@ const loaderManager = {
         }
         console.log('Start loading : ', this.queue);
 
-        this.loadQueue(objects)
+        this.loadQueue()
 
     },
-    loadQueue(objects) {
+    loadQueue() {
 
         /**
          * Version Récursive
