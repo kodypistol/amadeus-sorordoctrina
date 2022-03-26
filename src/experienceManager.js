@@ -28,7 +28,7 @@ const experienceManager =
             parchemin: null,
             bottle: null
         },
-
+        currentObject : null,
         init()
         {
             // Scene
@@ -61,6 +61,12 @@ const experienceManager =
 
             // // BIND ==> garder le scope de l'Experience Manager
             // loaderManager.loadGLTF(assets.mozart, this.setupIntro.bind(this))
+            this.addLight();
+        },
+
+        addLight() {
+            const light = new THREE.AmbientLight(0x404040); // soft white light
+            // sceneManager.addObject(light);
         },
 
         onLoadComplete(){
@@ -145,25 +151,23 @@ const experienceManager =
 
                     // const lightAxisHelper = new THREE.DirectionalLightHelper(this.directionalLight, 0.5);
                     // sceneManager.addObject(lightAxisHelper)
-                    sceneManager.addObject(this.objects.statue);
-
-
+                    this.changeFocusedObject(this.objects.statue);
                     break;
 
                 case 2:
                     // ÉCRAN SCÈNE 3D ACTE 2
                     console.log('acte 2')
-                    sceneManager.removeObject(this.objects.statue)
+                    this.removeFocusedObject();
                     sceneManager.removeObject(this.directionalLight)
                     break;
                 
                 case 3:
-                    sceneManager.removeObject(this.objects.statue)
+                    this.removeFocusedObject();
                     sceneManager.removeObject(this.directionalLight)
                     break;
 
                 case 4:
-                    sceneManager.addObject(this.objects.statue)
+                    this.changeFocusedObject(this.objects.statue, true);
                     this.objects.statue.position.set(0, -0.330, -2.660)
                     this.objects.statue.rotation.set(0.170, - 1.6 * Math.PI, 0)
                     this.objects.statue.scale.set(0.250, 0.250, 0.250)
@@ -212,26 +216,37 @@ const experienceManager =
                     bridgeScene.addActBridgeObject();
                     break;
                 case 5:
-                    sceneManager.removeObject(this.objects.statue)
-                    sceneManager.addObject(this.objects.harpsichord)
+                    this.changeFocusedObject(this.objects.harpsichord, true);
                     break;
                 case 6:
-                    sceneManager.removeObject(this.objects.harpsichord)
-                    console.log(this.objects.parchemin)
-                    sceneManager.addObject(this.objects.parchemin)
-
+                    this.changeFocusedObject(this.objects.parchemin, true);
                     break;
                 case 7:
-                    sceneManager.removeObject(this.objects.parchemin)
-                    console.log(this.objects.flask)
-                    sceneManager.addObject(this.objects.flask)
+                    this.changeFocusedObject(this.objects.flask, true);
                     break;
                 case 8:
-                    sceneManager.removeObject(this.objects.flask)
+                    this.removeFocusedObject();
                     break;
                 default:
             }
 
+        },
+        removeFocusedObject() {
+            if (this.currentObject) {
+                sceneManager.removeObject(this.currentObject);
+                this.currentObject = null;
+            }
+        },
+        changeFocusedObject(object, animate = false) {
+            // Enlève l'object courant s'il existe
+            this.removeFocusedObject();
+            // Ajoute l'objet dans la scene
+            this.currentObject = object;
+            sceneManager.addObject(this.currentObject);
+
+            if (animate) {
+                // Ici faire une animation d'apparition de l'objet 3D
+            }
         },
 
         startLoopExperience(){
@@ -257,6 +272,7 @@ const experienceManager =
                     bridgeScene.bridgeLoop();
                 }
 
+                this.onUpdate();
 
                 // Render
                 renderer.draw(sceneManager);
@@ -266,6 +282,13 @@ const experienceManager =
             }
 
             this.tick();
+        },
+
+        onUpdate() {
+            // Auto rotate current object
+            if (this.currentObject) {
+                // this.currentObject.rotation.y += 0.001;
+            }
         }
     }
 

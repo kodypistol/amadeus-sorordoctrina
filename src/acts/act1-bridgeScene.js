@@ -5,6 +5,7 @@ import sceneManager from "../scene";
 import renderer from "../renderer";
 import Camera from '../Camera';
 import experienceManager from "../experienceManager";
+import { MeshBasicMaterial, MeshStandardMaterial } from 'three';
 
 const bridgeScene = {
     init()
@@ -14,6 +15,12 @@ const bridgeScene = {
         experienceManager.directionalLight.intensity = 1;
         sceneManager.addObject(experienceManager.directionalLight);
 
+        // Hot fix material 
+        experienceManager.objects.bridge.children[0].children.forEach((mesh) => {
+            if (mesh.name === "Plane_2") {
+                mesh.material = new MeshStandardMaterial()
+            }
+        });
         this.bridgeGroup1 = new THREE.Group();
         this.bridgeGroup1.add(experienceManager.objects.bridge);
 
