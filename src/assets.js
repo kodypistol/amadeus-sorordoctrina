@@ -53,7 +53,7 @@ export default {
         sZ: 1
     },
     parchemin: {
-        url: './assets3D/parchment/parchment.gltf',
+        url: './assets3D/parchment/parchmin.gltf',
         pX: 0,
         pY: -0.460,
         pZ: -1.800,
