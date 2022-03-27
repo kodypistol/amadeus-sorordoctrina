@@ -38,7 +38,15 @@ export default {
     },
     flask: {
         url: './assets3D/flask/flask.gltf',
-        ...defaultScenography
+        pX: 0,
+        pY: -0.5,
+        pZ: -2,
+        rX: 0,
+        rY: 3,
+        rZ: 0,
+        sX: 0.5,
+        sY: 0.5,
+        sZ: 0.5
     },
     harpsichord: {
         url: './assets3D/harpsichord/harpsichord.gltf',

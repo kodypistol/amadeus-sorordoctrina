@@ -23,7 +23,7 @@ const pointerManager = {
                 case 1:
                     console.log('statue')
                     experienceManager.objects.statue.rotation.y =  (distanceX * (Math.PI * 0.0002)) + 1;
-                    experienceManager.objects.statue.rotation.z =  distanceY * (Math.PI * 0.00002);
+                    // experienceManager.objects.statue.rotation.z =  distanceY * (Math.PI * 0.00002);
                     break;
                 case 4:
                     console.log('statue')
@@ -38,12 +38,10 @@ const pointerManager = {
                 case 6:
                     console.log('parchemin')
                     experienceManager.objects.parchemin.rotation.y =  (distanceX * (Math.PI * 0.0002)) + 1;
-                    experienceManager.objects.parchemin.rotation.z =  distanceY * (Math.PI * 0.0002);
                     break;
                 case 7:
                     console.log('bouteille')
                     experienceManager.objects.flask.rotation.y =  (distanceX * (Math.PI * 0.0002)) + 1;
-                    experienceManager.objects.flask.rotation.z =  distanceY * (Math.PI * 0.0002);
                     break;
                 default:
                     console.log('marche pas')

@@ -123,7 +123,7 @@ const experienceManager =
             switch (index)
             {
                 case 0:
-
+                    console.log('PASSÉ PAR 0')
                     break;
                 case 1:
 
@@ -137,9 +137,9 @@ const experienceManager =
                     console.log(this.directionalLight.shadow.bias)
                     // this.directionalLight.shadow.bias = 0.01
 
-
-                    this.directionalLightHelper = new THREE.DirectionalLightHelper(this.directionalLight)
-                    sceneManager.addObject(this.directionalLightHelper);
+                    //
+                    // this.directionalLightHelper = new THREE.DirectionalLightHelper(this.directionalLight)
+                    // sceneManager.addObject(this.directionalLightHelper);
 
 
                     this.ambientLight = new THREE.AmbientLight('#B9B9B9', 1);
@@ -152,6 +152,7 @@ const experienceManager =
                     // const lightAxisHelper = new THREE.DirectionalLightHelper(this.directionalLight, 0.5);
                     // sceneManager.addObject(lightAxisHelper)
                     this.changeFocusedObject(this.objects.statue);
+
                     break;
 
                 case 2:
@@ -164,6 +165,8 @@ const experienceManager =
                 case 3:
                     this.removeFocusedObject();
                     sceneManager.removeObject(this.directionalLight)
+                    sceneManager.removeObject(this.ambientLight);
+
                     break;
 
                 case 4:
@@ -220,6 +223,42 @@ const experienceManager =
                     break;
                 case 6:
                     this.changeFocusedObject(this.objects.parchemin, true);
+                    console.log('childs:')
+                    const whiteColor = new THREE.Color('#ffffff')
+                    const glassMaterial = new THREE.MeshPhysicalMaterial({
+                        color: 0xffffff,
+                        transmission: 1,
+                        opacity: 0,
+                        transparent: true,
+                        metalness: 0,
+                        roughness: 0,
+                        thickness: 0.5,
+                    });
+                    const parcheminMaterial = new THREE.MeshPhysicalMaterial({
+                        reflectivity: 0.5,
+                        roughness: 1,
+                        metalness: 0,
+                        transmission: 0,
+                    });
+                    const physicalMaterial = new THREE.MeshPhysicalMaterial();
+                    this.currentObject.children.forEach((child) =>
+                    {
+                        if (child.name === "Glass")
+                        {
+                            child.material = glassMaterial;
+                        } else if (child.name === "Parchemin") {
+                            child.material = parcheminMaterial;
+                            console.log(child)
+
+                        }
+                        else
+                        {
+                            child.material = physicalMaterial;
+                        }
+
+
+                    })
+                    // this.currentObject.
                     break;
                 case 7:
                     this.changeFocusedObject(this.objects.flask, true);
@@ -266,7 +305,8 @@ const experienceManager =
                 // Start the bridge loop
                 if (router.getCurrentScene() === 4 ||
                     router.getCurrentScene() === 5 ||
-                    router.getCurrentScene() === 6
+                    router.getCurrentScene() === 6 ||
+                    router.getCurrentScene() === 7
                 )
                 {
                     bridgeScene.bridgeLoop();
@@ -287,7 +327,7 @@ const experienceManager =
         onUpdate() {
             // Auto rotate current object
             if (this.currentObject) {
-                // this.currentObject.rotation.y += 0.001;
+                this.currentObject.rotation.y += 0.001;
             }
         }
     }
