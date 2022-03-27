@@ -238,7 +238,8 @@ section {
     }
 
     img {
-      width: 50%;
+      max-width: 50%;
+      max-height: 300px;
     }
   }
 }
