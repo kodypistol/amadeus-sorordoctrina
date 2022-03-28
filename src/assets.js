@@ -15,14 +15,14 @@ export default {
     statue: {
         url: './assets3D/mozartStatue/photoscan_mozart.gltf',
         pX: 0,
-        pY: -0.8,
-        pZ: -5,
+        pY: 4,
+        pZ: -2.660,
         rX: Math.PI / 8,
         rY: - 1.6 * Math.PI,
         rZ: 0,
-        sX: 0.5,
-        sY: 0.5,
-        sZ: 0.5
+        sX: 0.250,
+        sY: 0.250,
+        sZ: 0.250
     },
     bridge: {
         url: './assets3D/bridge/bridge-v2.gltf',

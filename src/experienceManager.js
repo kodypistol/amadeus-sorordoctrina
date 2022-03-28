@@ -127,6 +127,8 @@ const experienceManager =
                     break;
                 case 1:
 
+                    this.currentIndex = 1;
+
                     this.directionalLight = new THREE.DirectionalLight(0xfffffff, 0.7);
                     this.directionalLight.position.set(-2, 2, 1);
 
@@ -151,7 +153,7 @@ const experienceManager =
 
                     // const lightAxisHelper = new THREE.DirectionalLightHelper(this.directionalLight, 0.5);
                     // sceneManager.addObject(lightAxisHelper)
-                    this.changeFocusedObject(this.objects.statue);
+                    this.changeFocusedObject(this.objects.statue, true);
 
                     break;
 
@@ -166,14 +168,10 @@ const experienceManager =
                     this.removeFocusedObject();
                     sceneManager.removeObject(this.directionalLight)
                     sceneManager.removeObject(this.ambientLight);
-
                     break;
 
                 case 4:
                     this.changeFocusedObject(this.objects.statue, true);
-                    this.objects.statue.position.set(0, -0.330, -2.660)
-                    this.objects.statue.rotation.set(0.170, - 1.6 * Math.PI, 0)
-                    this.objects.statue.scale.set(0.250, 0.250, 0.250)
 
                     this.directionalLight.castShadow = true;
                     this.objects.statue.castShadow = true;
@@ -219,10 +217,10 @@ const experienceManager =
                     bridgeScene.addActBridgeObject();
                     break;
                 case 5:
-                    this.changeFocusedObject(this.objects.harpsichord, true);
+                    this.changeFocusedObject(this.objects.harpsichord, true, true);
                     break;
                 case 6:
-                    this.changeFocusedObject(this.objects.parchemin, true);
+                    this.changeFocusedObject(this.objects.parchemin, true, true);
                     console.log('childs:')
                     const whiteColor = new THREE.Color('#ffffff')
                     const glassMaterial = new THREE.MeshPhysicalMaterial({
@@ -261,7 +259,7 @@ const experienceManager =
                     // this.currentObject.
                     break;
                 case 7:
-                    this.changeFocusedObject(this.objects.flask, true);
+                    this.changeFocusedObject(this.objects.flask, true, true);
                     break;
                 case 8:
                     this.removeFocusedObject();
@@ -270,22 +268,201 @@ const experienceManager =
             }
 
         },
-        removeFocusedObject() {
+        removeFocusedObject(callback) {
             if (this.currentObject) {
+                console.log('J\'ENLÈVE L\'OBJET:');
+                console.log(this.currentObject);
                 sceneManager.removeObject(this.currentObject);
                 this.currentObject = null;
+                callback;
             }
         },
-        changeFocusedObject(object, animate = false) {
-            // Enlève l'object courant s'il existe
-            this.removeFocusedObject();
-            // Ajoute l'objet dans la scene
-            this.currentObject = object;
-            sceneManager.addObject(this.currentObject);
+        removeDisappearingObject(callback){
+            sceneManager.removeObject(this.objectToDisappear);
+            this.objectToDisappear = null;
+            callback;
+        },
+        changeFocusedObject(object, animate = false, disparition = false) {
 
-            if (animate) {
-                // Ici faire une animation d'apparition de l'objet 3D
+            if (disparition)
+            {
+                switch (this.currentObject) {
+                    case this.objects.statue:
+                        this.objectToDisappear = this.currentObject;
+                        gsap.to(this.currentObject.position, {
+                            x:0,
+                            y: 5,
+                            z: -2.660,
+                            duration: 1.5,
+                            onComplete: onCompleteDisparition.bind(this)
+                        })
+                        break;
+                    case this.objects.harpsichord:
+                        this.objectToDisappear = this.currentObject;
+                        gsap.to(this.currentObject.position, {
+                            x:0.360,
+                            y: 4,
+                            z: -2.360,
+                            duration: 1,
+                            onComplete: onCompleteDisparition.bind(this)
+                        });
+                        break;
+                    case this.objects.parchemin:
+                        this.objectToDisappear = this.currentObject;
+                        gsap.to(this.currentObject.position, {
+                            x:0,
+                            y: 4,
+                            z: -1.800,
+                            duration: 1,
+                            onComplete: onCompleteDisparition.bind(this)
+                        });
+                        break;
+                    case this.objects.bottle:
+                        this.objectToDisappear = this.currentObject;
+                        gsap.to(this.currentObject.position, {
+                            x: 0,
+                            y: 4,
+                            z: -2,
+                            duration: 1,
+                            onComplete: onCompleteDisparition.bind(this)
+                        });
+                        break;
+                }
             }
+            // Enlève l'object courant s'il existe
+            function onCompleteDisparition () {
+                this.removeDisappearingObject(() =>
+                {
+                    // Ajoute l'objet dans la scene
+                    this.currentObject = object;
+                    sceneManager.addObject(this.currentObject);
+
+                    if (animate) {
+                        switch (this.currentObject) {
+                            case this.objects.statue:
+                                this.currentObject.position.y = 4;
+                                gsap.to(this.currentObject.position, {
+                                    x:0,
+                                    y: -0.330,
+                                    z: -2.660,
+                                    duration: 1
+                                })
+                                break;
+                            case this.objects.harpsichord:
+                                this.currentObject.position.y = 4;
+                                gsap.to(this.currentObject.position, {
+                                    x:  0.360,
+                                    y: -0.580,
+                                    z: -2.360,
+                                    duration: 1
+                                });
+                                break;
+                            case this.objects.parchemin:
+                                this.currentObject.position.y = 4;
+                                gsap.to(this.currentObject.position, {
+                                    x:0,
+                                    y: -0.460,
+                                    z: -1.800,
+                                    duration: 1
+                                });
+                                break;
+                            case this.objects.bottle:
+                                this.currentObject.position.y = 4;
+                                gsap.to(this.currentObject.position, {
+                                    x:0,
+                                    y: -0.5,
+                                    z: -2,
+                                    duration: 1
+                                });
+                                break;
+                        }
+
+                    }
+                });
+
+            }
+            if (this.currentIndex === 1)
+            {
+                this.currentObject = object;
+                sceneManager.addObject(this.currentObject);
+
+                console.log('index 1')
+                this.currentObject.position.y = 4;
+                gsap.to(this.currentObject.position, {
+                    x:0,
+                    y: -0.330,
+                    z: -2.660,
+                    duration: 1
+                })
+            }
+
+            //Animation de disparition
+            // if (disparition)
+            // {
+            //     console.log('sensé disparaitre là')
+            //     gsap.to(object.position, {
+            //         y: 4,
+            //         delay: 0.5,
+            //         duration: 1,
+            //         onComplete: completedAnimation.bind(this),
+            //     })
+            //     console.log('gsap animation disparition sur :')
+            //     console.log(object)
+            //
+            // } else if (this.currentIndex === 1)
+            // {
+            //     console.log('NOW, THIS IS ANIMATE COMPLETE')
+            //     console.log(object)
+            //     this.currentObject = object;
+            //     sceneManager.addObject(this.currentObject);
+            //
+            //         object.scale.set(0.250, 0.250, 0.250)
+            //         object.position.set(0, -0.330, -2.660);
+            // }
+            //
+            // function completedAnimation() {
+            //     // Ajoute l'objet dans la scene
+            //     this.currentObject = object;
+            //         if (object === this.objects.statue)
+            //         {
+            //             // this.objects.statue.position.set(0, -0.330, -2.660)
+            //             object.rotation.set(0.170, - 1.6 * Math.PI, 0)
+            //             object.scale.set(0.250, 0.250, 0.250)
+            //             object.position.set(0, 4, -3);
+            //             sceneManager.addObject(this.currentObject);
+            //             gsap.to(object.position, {
+            //                 x:0,
+            //                 y: -0.330,
+            //                 z: -2.660,
+            //                 duration: 1
+            //             })
+            //         } else
+            //         if (object === this.objects.harpsichord)
+            //         {
+            //             console.log('HARPSICHORD NOW')
+            //             // object.position.set(0.360, 4, -2.360);
+            //             // object.rotation.set(-3.002, -0.908, -3.101);
+            //             // object.scale.set(1, 1, 1);
+            //             gsap.to(object.position, {
+            //                 y: -0.580,
+            //                 delay: 0.5,
+            //                 duration: 1
+            //             })
+            //         }
+            //
+            //     }
+
+            //
+            // if (animateStart && this.currentIndex === 1)
+            // {
+            //     this.currentObject = object;
+            //     sceneManager.addObject(this.currentObject);
+            //
+            //     object.scale.set(0.250, 0.250, 0.250)
+            //     object.position.set(0, -0.330, -2.660);
+            // }
+
+
         },
 
         startLoopExperience(){
