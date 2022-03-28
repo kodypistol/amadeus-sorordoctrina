@@ -171,6 +171,7 @@ const experienceManager =
                     break;
 
                 case 4:
+                    this.currentIndex = 4;
                     this.changeFocusedObject(this.objects.statue, true);
 
                     this.directionalLight.castShadow = true;
@@ -222,15 +223,9 @@ const experienceManager =
                 case 6:
                     this.changeFocusedObject(this.objects.parchemin, true, true);
                     console.log('childs:')
-                    const whiteColor = new THREE.Color('#ffffff')
                     const glassMaterial = new THREE.MeshPhysicalMaterial({
-                        color: 0xffffff,
-                        transmission: 1,
                         opacity: 0,
                         transparent: true,
-                        metalness: 0,
-                        roughness: 0,
-                        thickness: 0.5,
                     });
                     const parcheminMaterial = new THREE.MeshPhysicalMaterial({
                         reflectivity: 0.5,
@@ -239,7 +234,7 @@ const experienceManager =
                         transmission: 0,
                     });
                     const physicalMaterial = new THREE.MeshPhysicalMaterial();
-                    this.currentObject.children.forEach((child) =>
+                    this.objects.parchemin.children.forEach((child) =>
                     {
                         if (child.name === "Glass")
                         {
@@ -280,7 +275,7 @@ const experienceManager =
         removeDisappearingObject(callback){
             sceneManager.removeObject(this.objectToDisappear);
             this.objectToDisappear = null;
-            callback;
+            callback();
         },
         changeFocusedObject(object, animate = false, disparition = false) {
 
@@ -288,17 +283,19 @@ const experienceManager =
             {
                 switch (this.currentObject) {
                     case this.objects.statue:
+                        console.log('disparaitre la statue')
                         this.objectToDisappear = this.currentObject;
                         gsap.to(this.currentObject.position, {
                             x:0,
                             y: 5,
                             z: -2.660,
-                            duration: 1.5,
+                            duration: 1,
                             onComplete: onCompleteDisparition.bind(this)
                         })
                         break;
                     case this.objects.harpsichord:
                         this.objectToDisappear = this.currentObject;
+                        console.log('disparaitre le harpsichord')
                         gsap.to(this.currentObject.position, {
                             x:0.360,
                             y: 4,
@@ -308,6 +305,7 @@ const experienceManager =
                         });
                         break;
                     case this.objects.parchemin:
+                        console.log('disparaitre parchemin')
                         this.objectToDisappear = this.currentObject;
                         gsap.to(this.currentObject.position, {
                             x:0,
@@ -318,6 +316,7 @@ const experienceManager =
                         });
                         break;
                     case this.objects.bottle:
+                        console.log('disparaitre bouteilles')
                         this.objectToDisappear = this.currentObject;
                         gsap.to(this.currentObject.position, {
                             x: 0,
@@ -337,9 +336,12 @@ const experienceManager =
                     this.currentObject = object;
                     sceneManager.addObject(this.currentObject);
 
+                    console.log('je suis bien arrivé à la condition animate')
+
                     if (animate) {
                         switch (this.currentObject) {
                             case this.objects.statue:
+                                console.log('PLACER LA STATUE')
                                 this.currentObject.position.y = 4;
                                 gsap.to(this.currentObject.position, {
                                     x:0,
@@ -349,6 +351,7 @@ const experienceManager =
                                 })
                                 break;
                             case this.objects.harpsichord:
+                                console.log('PLACER LE HARPSICHORD')
                                 this.currentObject.position.y = 4;
                                 gsap.to(this.currentObject.position, {
                                     x:  0.360,
@@ -358,6 +361,8 @@ const experienceManager =
                                 });
                                 break;
                             case this.objects.parchemin:
+                                console.log('PLACER Le parchemiun')
+
                                 this.currentObject.position.y = 4;
                                 gsap.to(this.currentObject.position, {
                                     x:0,
@@ -367,6 +372,8 @@ const experienceManager =
                                 });
                                 break;
                             case this.objects.bottle:
+                                console.log('PLACER LA bouteille')
+
                                 this.currentObject.position.y = 4;
                                 gsap.to(this.currentObject.position, {
                                     x:0,
@@ -381,19 +388,21 @@ const experienceManager =
                 });
 
             }
-            if (this.currentIndex === 1)
+            if (this.currentIndex === 1 || this.currentIndex === 4)
             {
                 this.currentObject = object;
                 sceneManager.addObject(this.currentObject);
 
                 console.log('index 1')
                 this.currentObject.position.y = 4;
+                console.log('PLACER STATUE INDEX 1')
                 gsap.to(this.currentObject.position, {
                     x:0,
                     y: -0.330,
                     z: -2.660,
                     duration: 1
                 })
+                this.currentIndex = null;
             }
 
             //Animation de disparition

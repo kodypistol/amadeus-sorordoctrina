@@ -33,7 +33,6 @@ const pointerManager = {
                 case 5:
                     console.log('clavecin')
                     experienceManager.objects.harpsichord.rotation.y =  -0.908 - ( ( distanceX * (Math.PI * 0.0002) ) );
-                    experienceManager.objects.harpsichord.rotation.z =  -3.101 - (distanceY * (Math.PI * 0.0001) - 0.25);
                     break;
                 case 6:
                     console.log('parchemin')
