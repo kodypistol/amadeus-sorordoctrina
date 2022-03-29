@@ -7,7 +7,9 @@ const sceneManager = {
 
         this.camera = new Camera(canvas);
         this.scene.add(this.camera.getThreeCamera());
-        // this.scene.fog = new THREE.Fog( 0xf2f7ff, 0, 10 );
+
+        this.scene.fog = new THREE.Fog( 0xf2f7ff, 0, 8 );
+
     },
 
     addObject(obj){
@@ -28,6 +30,14 @@ const sceneManager = {
 
     removeObject(obj){
         this.scene.remove(obj);
+    },
+    getCurrentObject(){
+        switch (this.getCurrentScene())
+        {
+            case 1:
+                return
+                break;
+        }
     }
 }
 

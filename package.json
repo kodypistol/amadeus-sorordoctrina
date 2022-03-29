@@ -24,6 +24,7 @@
     "signal-js": "^3.0.1",
     "style-loader": "^3.0.0",
     "three": "^0.130.1",
+    "threejs-object-controls": "^1.2.8",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.8.0"

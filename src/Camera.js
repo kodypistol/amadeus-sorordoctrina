@@ -9,6 +9,7 @@ class Camera {
         this.threeCamera.position.y = 0;
         this.threeCamera.position.z = 0;
 
+
         window.addEventListener('resize', () =>
         {
             // Update camera

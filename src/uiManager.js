@@ -1,5 +1,6 @@
 import signal from "signal-js";
 import router from "./router";
+import bridgeScene from "./acts/act1-bridgeScene";
 
 // DOM references
 const playableSections = document.querySelectorAll("section.playable-section");
@@ -30,7 +31,7 @@ const uiManager = {
     document.querySelector("button#close-infos").addEventListener("click", () => {router.showScreen(1)});
     // Start / end exp
     document.querySelector("button#start-exp-btn").addEventListener("click", this.onStartExperience);
-    document.querySelector("button#back-menu-btn").addEventListener("click", () => {router.showScreen(1)});
+    document.querySelector("button#back-menu-btn").addEventListener("click", () => {location.reload()});
     // Subtitles
     subtitlesButton.addEventListener("click", this.onToggleSubtitles);
 
@@ -67,6 +68,7 @@ const uiManager = {
     // Background positions and colors
     backgroundContainer.className = "step-" + index;
   },
+
 
   onStartExperience() {
       router.showScreen(2);
