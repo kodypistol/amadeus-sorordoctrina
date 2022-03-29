@@ -7,7 +7,9 @@ const sceneManager = {
 
         this.camera = new Camera(canvas);
         this.scene.add(this.camera.getThreeCamera());
+
         this.scene.fog = new THREE.Fog( 0xf2f7ff, 0, 8 );
+
     },
 
     addObject(obj){
