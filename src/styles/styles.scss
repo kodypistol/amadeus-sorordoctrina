@@ -3,19 +3,19 @@
 @font-face {
   font-family: "Lenora Premium";
   font-weight: 500;
-  src: url("../fonts/LenoraPremium-SemiBold.otf") format("opentype");
+  src: url("../assets/fonts/LenoraPremium-SemiBold.otf") format("opentype");
 }
 
 @font-face {
   font-family: "TTCommons";
   font-weight: 200;
-  src: url("../fonts/TTCommons-Light.ttf");
+  src: url("../assets/fonts/TTCommons-Light.ttf");
 }
 
 @font-face {
   font-family: "TTCommons";
   font-weight: bold;
-  src: url("../fonts/TTCommons-Bold.ttf");
+  src: url("../assets/fonts/TTCommons-Bold.ttf");
 }
 
 /* Document */
@@ -244,8 +244,7 @@ section {
     }
 
     img {
-      max-width: 50%;
-      max-height: 300px;
+      width: 50%;
     }
   }
 }
